@@ -1,0 +1,4912 @@
+{
+  "records": [
+    {
+      "command": ":$BD[n]#   Set Dec/Alt backlash in arc-seconds",
+      "family": ":",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$BR[n]#   Set RA/Azm backlash in arc-seconds",
+      "family": ":",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$QZ!#     Write PEC data to NV",
+      "family": ":",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$QZ+#     Enable RA PEC compensation",
+      "family": ":",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$QZ-#     Disable RA PEC Compensation",
+      "family": ":",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$QZ/#     Ready Record PEC",
+      "family": ":",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$QZ?#     Get PEC status",
+      "family": ":",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":$QZZ#     Clear the PEC data buffer",
+      "family": ":",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":%BD#      Get Dec/Alt Antibacklash value in arc-seconds",
+      "family": ":",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":%BR#      Get RA/Azm Antibacklash value in arc-seconds",
+      "family": ":",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":A+#       Align accept target location",
+      "family": ":A+",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":A?#       Align status",
+      "family": ":A",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":AW#       Align Write to EEPROM",
+      "family": ":AW",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":A[n]#     Start Telescope Manual Alignment Sequence",
+      "family": ":A",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":B+#",
+      "family": ":B+",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":B+#       Increase reticle Brightness",
+      "family": ":B+",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":B-#",
+      "family": ":B-",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":B-#       Decrease Reticle Brightness",
+      "family": ":B-",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":CM#       Synchonize the telescope with the current database object (as above)",
+      "family": ":CM",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":CS#",
+      "family": ":CS",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":CS#       Synchonize the telescope with the current right ascension and declination coordinates",
+      "family": ":CS",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":D#        Return: \"\\0x7f#\" if the mount is moving, otherwise \"#\".",
+      "family": ":D",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":EC[s]# Echo string [s] as a debug message",
+      "family": ":EC",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":ENVRESET# Wipe flash",
+      "family": ":ENVRESET",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":ERESET#   Reset the MCU",
+      "family": ":ERESET",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":ESPFLASH# ESP8266 device flash mode",
+      "family": ":ESPFLASH",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F+#",
+      "family": ":F+",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F+#       Move focuser in (toward objective)",
+      "family": ":F+",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F+# / :F-# -> no reply text",
+      "family": ":F+",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F-#",
+      "family": ":F-",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F-#       Move focuser out (away from objective)",
+      "family": ":F-",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F1+#",
+      "family": ":F1+",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F1-#",
+      "family": ":F1-",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F12#",
+      "family": ":F12",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F14#",
+      "family": ":F14",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F1Q#:F2Q#",
+      "family": ":F1Q",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F1[...]#  Focuser #1 (Axis4)",
+      "family": ":F1",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F2+#",
+      "family": ":F2+",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F2-#",
+      "family": ":F2-",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F22#",
+      "family": ":F22",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F24#",
+      "family": ":F24",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F2[...]#  Focuser #2 (Axis5)",
+      "family": ":F2",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F3[...]#  Focuser #3 (Axis6)",
+      "family": ":F3",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F4[...]#  Focuser #4 (Axis7)",
+      "family": ":F4",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F5[...]#  Focuser #5 (Axis8)",
+      "family": ":F5",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F6[...]#  Focuser #6 (Axis9)",
+      "family": ":F6",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FA#    Focuser Active?",
+      "family": ":FA",
+      "files": [
+        "focuser/local/Focuser.command.cpp",
+        "focuser/remote/Focuser.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FA[n]#    Select focuser where [n] = 1 to 6",
+      "family": ":FA",
+      "files": [
+        "focuser/local/Focuser.command.cpp",
+        "focuser/remote/Focuser.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FB#       Get focuser backlash amount (in steps or microns)",
+      "family": ":FB",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FB# (get) -> RX: i32LE backlash (units)",
+      "family": ":FB",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FB# (get) or :FB[n]# (set)  (units via ctrl)",
+      "family": ":FB",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FB# (get) or :FB[n]# (set) -> values in units (microns or steps)",
+      "family": ":FB",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FB[n]#    Set focuser backlash amount (in steps or microns)",
+      "family": ":FB",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FB[n]# (set) -> typically no payload (status-only)",
+      "family": ":FB",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FC#       Get focuser temperature compensation coefficient in microns per \u00b0C)",
+      "family": ":FC",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FC# (get f32) or :FC[sn.n]# (set f32)",
+      "family": ":FC",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp",
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FC# (get) -> RX: f32LE",
+      "family": ":FC",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FC[sn.n]# (set) -> usually no payload",
+      "family": ":FC",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FC[sn.n]# Set focuser temperature compensation coefficient in microns per \u00b0C (+ moves out as temperature falls)",
+      "family": ":FC",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FD#       Get focuser temperature compensation deadband amount (in steps or microns)",
+      "family": ":FD",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FD# (get) -> RX: i32LE (units)",
+      "family": ":FD",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FD# (get) or :FD[n]# (set i32)",
+      "family": ":FD",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FD# (get) or :FD[n]# (set) -> values in units",
+      "family": ":FD",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FD[n]#    Set focuser temperature compensation deadband amount (in steps or microns)",
+      "family": ":FD",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FD[n]# (set) -> no payload",
+      "family": ":FD",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FG#       Get focuser current position (in microns or steps)",
+      "family": ":FG",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FG# -> RX: i32LE position (units)",
+      "family": ":FG",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FG# -> i32 units (position)",
+      "family": ":FG",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FG# / :Fg#  (get pos i32 units via ctrl)",
+      "family": ":FG",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FH#       Set focuser position as home",
+      "family": ":FH",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FH#  (set home)",
+      "family": ":FH",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FH# -> no reply text (set home)",
+      "family": ":FH",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FI#       Get full in position (in microns or steps)",
+      "family": ":FI",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FI# -> i32 units",
+      "family": ":FI",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FI# / :FM# -> RX: i32LE (units already selected by ctrl on request)",
+      "family": ":FI",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FI# / :Fi# (min)  (units via ctrl)",
+      "family": ":FI",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FM#       Get max position (in microns or steps)",
+      "family": ":FM",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FM# -> i32 units",
+      "family": ":FM",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FM# / :Fm# (max)  (units via ctrl)",
+      "family": ":FM",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FP#       Get focuser DC Motor Power Level (in %)",
+      "family": ":FP",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FP# (get) -> RX: u8 percent (or i32 if you choose; server I gave uses u8)",
+      "family": ":FP",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FP# (get) or :FP[n]# (set u8)",
+      "family": ":FP",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FP# (get) or :FP[n]# (set) -> u8 percent (no unit-bit conversion)",
+      "family": ":FP",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FP[n]#    Set focuser DC Motor Power Level (in %)",
+      "family": ":FP",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FP[n]# (set) -> no payload",
+      "family": ":FP",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FQ#",
+      "family": ":FQ",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FQ#       Stop the focuser",
+      "family": ":FQ",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FQ# -> no reply text",
+      "family": ":FQ",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FR[sn]#   Goto focuser target position relative (in microns or steps)",
+      "family": ":FR",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FR[sn]# -> no reply text (relative)",
+      "family": ":FR",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FR[sn]# / :Fr[sn]# (relative i32 units via ctrl)",
+      "family": ":FR",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FS[n]#    Goto focuser target position (in microns or steps)",
+      "family": ":FS",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FS[n]# -> numeric 1/0 (absolute)",
+      "family": ":FS",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FS[n]# / :Fs[n]# (absolute i32 units via ctrl)",
+      "family": ":FS",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FT#",
+      "family": ":FT",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FT#       Get status",
+      "family": ":FT",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FT# -> \"M\"/\"S\" + rateDigit (ASCII)",
+      "family": ":FT",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FT# -> RX: ASCII bytes \"M\"/\"S\" + rateDigit",
+      "family": ":FT",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FW#",
+      "family": ":FW",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FW#       Get focuser working slew rate",
+      "family": ":FW",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FW# -> RX: i32LE work rate (um/s or whatever your server returns)",
+      "family": ":FW",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FW# -> i32 \u00b5m/s (NO unit-bit conversion per your clarification)",
+      "family": ":FW",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FZ#       Set focuser position as zero",
+      "family": ":FZ",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FZ#  (zero)",
+      "family": ":FZ",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":FZ# -> no reply text",
+      "family": ":FZ",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F[...]#   Use selected focuser (defaults to the first focuser)",
+      "family": ":F",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F[1..9]#  (rate digit; no param)",
+      "family": ":F",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F[1..9]# -> no reply text",
+      "family": ":F",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F[n]#     Set focuser move or goto rate",
+      "family": ":F",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":F[n]a#    Focuser presence detection",
+      "family": ":F",
+      "files": [
+        "focuser/remote/Focuser.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fa#       Focuser presence detection",
+      "family": ":Fa",
+      "files": [
+        "focuser/remote/Focuser.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fa#       Get primary focuser",
+      "family": ":Fa",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fc#       Get focuser temperature compensation enable status",
+      "family": ":Fc",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fc# (get) -> RX: u8 0/1 (if server returns payload) OR status-only",
+      "family": ":Fc",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fc# (get) or :Fc[n]# (set u8)",
+      "family": ":Fc",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fc# (get) or :Fc[n]# (set) -> status-only boolean (matches local)",
+      "family": ":Fc",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fc[n]#    Enable/disable focuser temperature compensation where [n] = 0 or 1",
+      "family": ":Fc",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fc[n]# (set) -> no payload",
+      "family": ":Fc",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fe#",
+      "family": ":Fe",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fe#       Get focuser temperature differential",
+      "family": ":Fe",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fe# -> f32 (deg C)",
+      "family": ":Fe",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fe# / :Ft# -> RX: f32LE temperature values",
+      "family": ":Fe",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fh#       Move focuser target position to home",
+      "family": ":Fh",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fh#  (goto home)",
+      "family": ":Fh",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fh# -> no reply text (goto home)",
+      "family": ":Fh",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fp#",
+      "family": ":Fp",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fp#       Get mode",
+      "family": ":Fp",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fp# -> status-only boolean (matches local: CE_0 if not DC)",
+      "family": ":Fp",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Ft#",
+      "family": ":Ft",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Ft#       Get focuser temperature",
+      "family": ":Ft",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Ft# -> f32 (deg C)",
+      "family": ":Ft",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fu#",
+      "family": ":Fu",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fu#       Get focuser microns per step",
+      "family": ":Fu",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fu# -> RX: f32LE microns per step",
+      "family": ":Fu",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Fu# -> f32 (microns per step)",
+      "family": ":Fu",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GA#       Get Mount Altitude",
+      "family": ":GA",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GAH#      High precision",
+      "family": ":GAH",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GC#       Get standard calendar date",
+      "family": ":GC",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GD#       Get Mount Declination",
+      "family": ":GD",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GDH#      Returns: sDD*MM:SS.SSS# (high precision)",
+      "family": ":GDH",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GG#       Get UTC offset time, hours and minutes to add to local time to convert to UTC",
+      "family": ":GG",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GL#       Get Local Standard Time in 24 hour format",
+      "family": ":GL",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GLH#      Returns: HH:MM:SS.SSSS# (high precision)",
+      "family": ":GLH",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GM#       Get site 1 name",
+      "family": ":GM",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GN#       Get site 2 name",
+      "family": ":GN",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GO#       Get site 3 name",
+      "family": ":GO",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GP#       Get site 4 name",
+      "family": ":GP",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GR#       Get Mount Right Ascension",
+      "family": ":GR",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GRH#      Returns: HH:MM:SS.SSSS# (high precision)",
+      "family": ":GRH",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GS#       Get the Sidereal Time as sexagesimal value in 24 hour format",
+      "family": ":GS",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GSH#      Returns: HH:MM:SS.ss# (high precision)",
+      "family": ":GSH",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GT#         Get tracking rate, 0.0 unless TrackingSidereal",
+      "family": ":GT",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GU#       Get telescope Status",
+      "family": ":GU",
+      "files": [
+        "mount/status/Status.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVC#      Get Firmware Config Name",
+      "family": ":GVC",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVD#      Get OnStepX Firmware Date",
+      "family": ":GVD",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVH#      Get Firmware Hardware",
+      "family": ":GVH",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVM#      General Message",
+      "family": ":GVM",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVN#      Get Firmware Number",
+      "family": ":GVN",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVP#      Get Product Name",
+      "family": ":GVP",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GVT#      Get Firmware Time",
+      "family": ":GVT",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GW#       Get tracking and basic mount state",
+      "family": ":GW",
+      "files": [
+        "mount/status/Status.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX          OnStep extended command",
+      "family": ":GX",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX0[n]#   Get align setting [n]",
+      "family": ":GX0",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX4[n]#   Get angles [n]",
+      "family": ":GX4",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX80#     Get the UT1 Time as sexagesimal value in 24 hour format",
+      "family": ":GX80",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX81#     Get the UT1 Date",
+      "family": ":GX81",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX89#     Date/time ready status",
+      "family": ":GX89",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX90#     Get setting pulse guide rate",
+      "family": ":GX90",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX91#     Get PEC analog value",
+      "family": ":GX91",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX98#",
+      "family": ":GX98",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": true,
+      "wrapper_helper": false,
+      "wrapper": true
+    },
+    {
+      "command": ":GX98#     Get rotator availablity",
+      "family": ":GX98",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX98#  Get rotator availability",
+      "family": ":GX98",
+      "files": [
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX98# -> RX: u8 ASCII 'D'/'R'/'N'",
+      "family": ":GX98",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX9A#     temperature in deg. C",
+      "family": ":GX9A",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX9B#     pressure in mb",
+      "family": ":GX9B",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX9C#     relative humidity in %",
+      "family": ":GX9C",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX9E#     dew point in deg. C",
+      "family": ":GX9E",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX9F#     MCU temperature in deg. C",
+      "family": ":GX9F",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GX9[n]#   Get setting [n]",
+      "family": ":GX9",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXE6#     Get number of steps per sidereal second",
+      "family": ":GXE6",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXE7#     Get PEC worm rotation steps (from NV)",
+      "family": ":GXE7",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXE8#     Get PEC buffer size in seconds",
+      "family": ":GXE8",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXE[m]#   Get Other Limit [m]",
+      "family": ":GXE",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXE[m]#   Get mount setting",
+      "family": ":GXE",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXFn#     Get frequency setting and workload",
+      "family": ":GXFn",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXTD#     Get tracking rate offset Dec in arc-seconds/sidereal second",
+      "family": ":GXTD",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXTR#     Get tracking rate offset RA in arc-seconds/sidereal second",
+      "family": ":GXTR",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXU3#",
+      "family": ":GXU3",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": true,
+      "wrapper_helper": false,
+      "wrapper": true
+    },
+    {
+      "command": ":GXU3#  Get rotator driver status",
+      "family": ":GXU3",
+      "files": [
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXU3# -> RX u8 packed status",
+      "family": ":GXU3",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXU[n]#",
+      "family": ":GXU",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXU[n]#  Get focuser driver status",
+      "family": ":GXU",
+      "files": [
+        "focuser/remote/Focuser.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXU[n]# -> RX u8 packed status",
+      "family": ":GXU",
+      "files": [
+        "focuser/remote/Focuser.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXX[n]#",
+      "family": ":GXX",
+      "files": [
+        "auxiliary/local/Features.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXX[n]#  where [n]=1..8",
+      "family": ":GXX",
+      "files": [
+        "auxiliary/remote/Features.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXXn#  (wire: idx 0..7) -> per-purpose packed values",
+      "family": ":GXXn",
+      "files": [
+        "auxiliary/local/Features.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXXn#  :GXYn#  :SXXn,*#",
+      "family": ":GXXn",
+      "files": [
+        "auxiliary/remote/Features.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXXn# -> per-purpose value reply, rendered as original comma-separated ASCII,",
+      "family": ":GXXn",
+      "files": [
+        "auxiliary/remote/Features.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXY0#",
+      "family": ":GXY0",
+      "files": [
+        "auxiliary/local/Features.command.cpp",
+        "auxiliary/remote/Features.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXY0#  -> bitmap of active features (8 bits)",
+      "family": ":GXY0",
+      "files": [
+        "auxiliary/local/Features.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXY0# -> \"01010101\" (8 chars, no terminator transmitted on CAN; we add it locally)",
+      "family": ":GXY0",
+      "files": [
+        "auxiliary/remote/Features.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXY[n]#",
+      "family": ":GXY",
+      "files": [
+        "auxiliary/local/Features.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXY[n]#  where [n]=1..8",
+      "family": ":GXY",
+      "files": [
+        "auxiliary/remote/Features.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXYn#  (wire: idx 0..7) -> purpose + short name",
+      "family": ":GXYn",
+      "files": [
+        "auxiliary/local/Features.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GXYn# -> \"NAME,PURPOSE\" (NAME up to 10 chars; PURPOSE numeric)",
+      "family": ":GXYn",
+      "files": [
+        "auxiliary/remote/Features.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GZ#       Get Mount Azimuth",
+      "family": ":GZ",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GZH#      High precision",
+      "family": ":GZH",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Ga#       Get standard time in 12 hour format",
+      "family": ":Ga",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GaH#      High precision",
+      "family": ":GaH",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gal#      Get target Altitude",
+      "family": ":Gal",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gc#       Get the Local Standard Time format",
+      "family": ":Gc",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gd#       Get target Declination",
+      "family": ":Gd",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GdH#      High precision",
+      "family": ":GdH",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gg#       Get Current Site Longitude, east is negative",
+      "family": ":Gg",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GgH#      Get current site Longitude",
+      "family": ":GgH",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gh#       Get Horizon Limit, the minimum elevation of the mount relative to the horizon",
+      "family": ":Gh",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gm#       Gets the meridian pier-side",
+      "family": ":Gm",
+      "files": [
+        "mount/status/Status.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Go#       Get Overhead Limit",
+      "family": ":Go",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gr#       Get target Right Ascension",
+      "family": ":Gr",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GrH#      Returns: HH:MM:SS.SSSS# (high precision)",
+      "family": ":GrH",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gt#       Get current site Latitude, positive for North latitudes",
+      "family": ":Gt",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GtH#      Get current site Latitude, positive for North latitudes",
+      "family": ":GtH",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gu#       Get bit packed telescope status",
+      "family": ":Gu",
+      "files": [
+        "mount/status/Status.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gv#       Get the site eleVation in meters",
+      "family": ":Gv",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Gz#       Get target Azimuth",
+      "family": ":Gz",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":GzH#      High precision",
+      "family": ":GzH",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":L!#       Clear library (all catalogs)",
+      "family": ":L",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":L$#       Move to catalog name record",
+      "family": ":L",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":L?#       Get library free records (all catalogs)",
+      "family": ":L",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LB#",
+      "family": ":LB",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LB#       Find previous catalog object subject to the current constraints",
+      "family": ":LB",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LC[n]#    Set current target object to catalog object number",
+      "family": ":LC",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LD#       Clear current record",
+      "family": ":LD",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LI#       Get Object Information",
+      "family": ":LI",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LIG#",
+      "family": ":LIG",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LIG#      Get catalog object information and goto target",
+      "family": ":LIG",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LL#       Clear current catalog",
+      "family": ":LL",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LN#",
+      "family": ":LN",
+      "files": [
+        "mount/st4/St4.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LN#       Find next catalog object subject to the current constraints",
+      "family": ":LN",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LR#       Get catalog object information including RA and Dec, with advance to next record",
+      "family": ":LR",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LWM31 AND,GAL#",
+      "family": ":LWM31",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":LW[s]#    Write catalog object information including current target RA,Dec to next available empty record",
+      "family": ":LW",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Lo[n]#    Select Library catalog by catalog number n",
+      "family": ":Lo",
+      "files": [
+        "mount/library/Library.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MA#       Goto the target Alt and Az",
+      "family": ":MA",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MD#       Goto Destination pier side for the Target Object",
+      "family": ":MD",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MGd[n]#   Pulse guide command where n is the guide time in milliseconds",
+      "family": ":MGd",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MN#   Goto current RA/Dec but opposite Pier side (within meridian limit overlap)",
+      "family": ":MN",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MNe#  Goto current RA/Dec but East of the Pier (within meridian limit overlap)",
+      "family": ":MNe",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MNw#  Goto current RA/Dec but West of the Pier (within meridian limit overlap)",
+      "family": ":MNw",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MP#       Goto the Current Position for Polar Align",
+      "family": ":MP",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":MS#       Goto the Target Object",
+      "family": ":MS",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Me#       Move Telescope East at current guide rate",
+      "family": ":Me",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Mgd[n]#   Pulse guide command where n is the guide time in milliseconds",
+      "family": ":Mgd",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Mn#       Move Telescope North at current guide rate",
+      "family": ":Mn",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Mp#       Move Telescope for sPiral search at current guide rate",
+      "family": ":Mp",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Ms#       Move Telescope South at current guide rate",
+      "family": ":Ms",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Mw#       Move Telescope West at current guide rate",
+      "family": ":Mw",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Q#        Halt all slews, stops goto",
+      "family": ":Q",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Qe# Qw#   Halt east/westward Slews",
+      "family": ":Qe",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Qn# Qs#   Halt north/southward Slews",
+      "family": ":Qn",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":RA[n.n]#  Set Axis1 Guide rate to n.n degrees per second",
+      "family": ":RA",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":RC#       Set guide rate: Centering      8X",
+      "family": ":RC",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":RE[n.n]#  Set Axis2 Guide rate to n.n degrees per second",
+      "family": ":RE",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":RF#       Set guide rate: Fast          48X",
+      "family": ":RF",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":RG#       Set guide rate: Guiding        1X",
+      "family": ":RG",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":RM#       Set guide rate: Find          20X",
+      "family": ":RM",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":RS#       Set guide rate: Slew           ?X (1/2 of current goto rate)",
+      "family": ":RS",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Rn#       Set guide rate to n, where n = 0..9",
+      "family": ":Rn",
+      "files": [
+        "mount/guide/Guide.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SC[MM/DD/YY]# or :SC[MM/DD/YYYY]#",
+      "family": ":SC",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SEO#         Set coordinate origin for absolute encoders or mount coordinate memory",
+      "family": ":SEO",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SG[sHH]# or :SG[sHH:MM]# (where MM is 00, 30, or 45)",
+      "family": ":SG",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SL[HH:MM:SS]# or :SL[HH:MM:SS.SSS]#",
+      "family": ":SL",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SM[s]# or :SN[s]# or :SO[s]# or :SP[s]#",
+      "family": ":SM",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SO#",
+      "family": ":SO",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "literal",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":ST[H.H]# Set Tracking Rate in Hz where 60.0 is the solar rate",
+      "family": ":ST",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":SU[s.s]#",
+      "family": ":SU",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SX0[m],[n]#   Set align model coefficient [m] to value [n]",
+      "family": ":SX0",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SX4[m],[n]#   Set encoder axis [m] to value [n]",
+      "family": ":SX4",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SX97,[n]#     Set buzzer state",
+      "family": ":SX97",
+      "files": [
+        "mount/status/Status.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":SX9A,[sn.n]#",
+      "family": ":SX9A",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":SX9B,[n.n]#",
+      "family": ":SX9B",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":SX9C,[n.n]#",
+      "family": ":SX9C",
+      "files": [
+        "Telescope.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":SX9[m],[n]#   Set mount misc.",
+      "family": ":SX9",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":SXE7,[n]#",
+      "family": ":SXE7",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXE9,[n]#",
+      "family": ":SXE9",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXEA,[n]#",
+      "family": ":SXEA",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXEM,[n]#   Set mount type (for next restart) where n=0 for default",
+      "family": ":SXEM",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXTD,n.n#   Set tracking rate offset Dec in arc-seconds/sidereal second",
+      "family": ":SXTD",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXTR,n.n# Set tracking rate offset RA in arc-seconds/sidereal second",
+      "family": ":SXTR",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXX[n],V[Z][S][v]#",
+      "family": ":SXX",
+      "files": [
+        "auxiliary/local/Features.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":SXXn,...  (wire: [idx1 1..8][sub][u8 payload])",
+      "family": ":SXXn",
+      "files": [
+        "auxiliary/local/Features.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Sa[sDD*MM]# or :Sa[sDD*MM'SS]# or :Sa[sDD*MM'SS.SSS]#",
+      "family": ":Sa",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Sd[sDD*MM]# or :Sd[sDD*MM:SS]# or :Sd[sDD*MM:SS.SSS]#",
+      "family": ":Sd",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Sg[(s)DDD*MM]# or :Sg[(s)DDD*MM:SS]# or :Sg[(s)DDD*MM:SS.SSS]#",
+      "family": ":Sg",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Sh[sDD]#",
+      "family": ":Sh",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":So[DD]#",
+      "family": ":So",
+      "files": [
+        "mount/limits/Limits.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Sr[HH:MM.T]# or :Sr[HH:MM:SS]# or :Sr[HH:MM:SS.SSSS]#",
+      "family": ":Sr",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":St[sDD*MM]# or :St[sDD*MM:SS]# or :St[sDD*MM:SS.SSS]#",
+      "family": ":St",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Sv[sn.n]#",
+      "family": ":Sv",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Sz[DDD*MM]# or :Sz[DDD*MM'SS]# or :Sz[DDD*MM'SS.SSS]#",
+      "family": ":Sz",
+      "files": [
+        "mount/goto/Goto.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":T+#       Master sidereal clock faster by 0.02 Hertz (stored in EEPROM)",
+      "family": ":T+",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":T-#       Master sidereal clock slower by 0.02 Hertz (stored in EEPROM)",
+      "family": ":T-",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":T1#       Track dual axis off (disable Dec tracking on Eq mounts)",
+      "family": ":T1",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":T2#       Track dual axis on",
+      "family": ":T2",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":TK#       Track rate king     60.136Hz",
+      "family": ":TK",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":TL#       Track rate lunar    57.9Hz",
+      "family": ":TL",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":TQ#       Track rate sidereal 60.164Hz",
+      "family": ":TQ",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":TR#       Master sidereal clock reset (to calculated sidereal rate, stored in EEPROM)",
+      "family": ":TR",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":TS#       Track rate solar    60Hz",
+      "family": ":TS",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": true,
+      "wrapper": true
+    },
+    {
+      "command": ":Td#       Tracking disable",
+      "family": ":Td",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Te#       Tracking enable",
+      "family": ":Te",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Tn#       Track compensation off",
+      "family": ":Tn",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":To#       Track full compensation on",
+      "family": ":To",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Tr#       Track refraction compensation on",
+      "family": ":Tr",
+      "files": [
+        "mount/Mount.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":VH#      PEC index sense position in sidereal seconds",
+      "family": ":VH",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":VR#       Read PEC table entry rate adjustment (in steps +/-) for currently playing segment and its rate adjustment (in steps +/-)",
+      "family": ":VR",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":VR[n]#    Read PEC table entry rate adjustment (in steps +/-) for worm segment n (in seconds)",
+      "family": ":VR",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":VS#       Get PEC number of steps per sidereal second of worm rotation",
+      "family": ":VS",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":VW#       Get pec worm rotation steps",
+      "family": ":VW",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":Vr[n]#    Read out RA PEC ten byte frame in hex format starting at worm segment n (in seconds)",
+      "family": ":Vr",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":W?#       Queries current site",
+      "family": ":W",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":WR+#      Move PEC Table ahead by one sidereal second",
+      "family": ":WR+",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":WR-#      Move PEC Table back by one sidereal second",
+      "family": ":WR-",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":WR[n,sn]# Write PEC table entry for worm segment [n] (in sidereal seconds)",
+      "family": ":WR",
+      "files": [
+        "mount/pec/Pec.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":W[n]#     Sets current site to n, where n = 0..3",
+      "family": ":W",
+      "files": [
+        "mount/site/Site.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":h?#       Get home status - has sense, auto home enabled, offset axis1, offset axis2 (in arcseconds.)",
+      "family": ":h",
+      "files": [
+        "mount/home/Home.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hAn#      Set auto home state.",
+      "family": ":hAn",
+      "files": [
+        "mount/home/Home.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hC#       Moves mount to the home position",
+      "family": ":hC",
+      "files": [
+        "mount/home/Home.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hC1,n#    Set home sense direction and home offset for axis1 arcseconds",
+      "family": ":hC1",
+      "files": [
+        "mount/home/Home.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hC2,n#    Set home sense direction and home offset for axis2 arcseconds",
+      "family": ":hC2",
+      "files": [
+        "mount/home/Home.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hF#       Reset mount at the home position.  This position is required for a cold Start.",
+      "family": ":hF",
+      "files": [
+        "mount/home/Home.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hP#",
+      "family": ":hP",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": true,
+      "wrapper_helper": false,
+      "wrapper": true
+    },
+    {
+      "command": ":hP#       Moves focuser(s) to the park position",
+      "family": ":hP",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hP#       Moves mount to the park position",
+      "family": ":hP",
+      "files": [
+        "mount/park/Park.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hP#       Moves rotator to the park position",
+      "family": ":hP",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hP#  -> numeric 1/0",
+      "family": ":hP",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hP# / :hR#  park/unpark ALL present focusers",
+      "family": ":hP",
+      "files": [
+        "focuser/remote/Focuser.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hQ#       Set the mount park position",
+      "family": ":hQ",
+      "files": [
+        "mount/park/Park.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hR#",
+      "family": ":hR",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": true,
+      "wrapper_helper": false,
+      "wrapper": true
+    },
+    {
+      "command": ":hR#       Restore parked focuser(s) to operation",
+      "family": ":hR",
+      "files": [
+        "focuser/local/Focuser.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hR#       Restore parked mount to operation",
+      "family": ":hR",
+      "files": [
+        "mount/park/Park.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hR#       Restore parked rotator to operation",
+      "family": ":hR",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":hR#  -> numeric 1/0",
+      "family": ":hR",
+      "files": [
+        "focuser/local/Focuser.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r+#",
+      "family": ":r+",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r+#       Derotator Enable",
+      "family": ":r+",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r-#",
+      "family": ":r-",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r-#       Derotator Disable",
+      "family": ":r-",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r<#",
+      "family": ":r",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r<#       Move rotator CCW",
+      "family": ":r",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r>#",
+      "family": ":r",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r>#       Move rotator CW",
+      "family": ":r",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rA#",
+      "family": ":rA",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rA#    rotator Active?",
+      "family": ":rA",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rC#",
+      "family": ":rC",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rC#       Move rotator to half-travel target position",
+      "family": ":rC",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rD#",
+      "family": ":rD",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rD#       Get rotator degrees per step",
+      "family": ":rD",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rD# -> RX: f32 deg_per_step",
+      "family": ":rD",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rF#",
+      "family": ":rF",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rF#       Set rotator position as Half-travel",
+      "family": ":rF",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rG#",
+      "family": ":rG",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rG#       Get rotator current angle",
+      "family": ":rG",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rG# -> RX: f32 degrees; convert to DMS string for LX200 output",
+      "family": ":rG",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rI#",
+      "family": ":rI",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rI#       Get rotator mInimum position (in degrees)",
+      "family": ":rI",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rI# -> RX: i32 degrees (rounded)",
+      "family": ":rI",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rM#",
+      "family": ":rM",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rM#       Get rotator Max position (in degrees)",
+      "family": ":rM",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rM# -> RX: i32 degrees (rounded)",
+      "family": ":rM",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rP#",
+      "family": ":rP",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rP#       Rotator move to parallactic angle",
+      "family": ":rP",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rQ#",
+      "family": ":rQ",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rQ#       Stop (Quit) rotator movement",
+      "family": ":rQ",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rR#",
+      "family": ":rR",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rR#       Derotator Reverse direction",
+      "family": ":rR",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rS[deg]#",
+      "family": ":rS",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rS[sDDD*MM, etc.]#",
+      "family": ":rS",
+      "files": [
+        "rotator/local/Rotator.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rT#",
+      "family": ":rT",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rT#       Get rotator sTatus",
+      "family": ":rT",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rT# -> RX: ASCII bytes \"M\"/\"S\"[\"D\"][\"R\"] + rateDigit",
+      "family": ":rT",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rW#",
+      "family": ":rW",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rW#       Get working slew rate in deg/s",
+      "family": ":rW",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rW# -> RX: f32 deg_per_sec (settings.gotoRate)",
+      "family": ":rW",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rZ#",
+      "family": ":rZ",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rZ#       Set rotator position to Zero degrees",
+      "family": ":rZ",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r[1..9]#",
+      "family": ":r",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r[1..9]#  (no parameter allowed)",
+      "family": ":r",
+      "files": [
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":r[n]#     Set rotator move or goto rate",
+      "family": ":r",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rb#       Get rotator Backlash amount (in steps)",
+      "family": ":rb",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rb# (get)",
+      "family": ":rb",
+      "files": [
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rb# -> RX: i16 steps (read mode) OR no payload (write mode)",
+      "family": ":rb",
+      "files": [
+        "rotator/remote/Rotator.can.decode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rb# or :rb[n]#",
+      "family": ":rb",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rb[n]#    Set rotator Backlash amount (in steps)",
+      "family": ":rb",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rb[n]# (set)",
+      "family": ":rb",
+      "files": [
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rc#",
+      "family": ":rc",
+      "files": [
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rc#       Set continious move",
+      "family": ":rc",
+      "files": [
+        "rotator/local/Rotator.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rc# (ignored/no-op)",
+      "family": ":rc",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rr[deg]#",
+      "family": ":rr",
+      "files": [
+        "rotator/local/Rotator.can.command.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    },
+    {
+      "command": ":rr[sDDD*MM, etc.]#",
+      "family": ":rr",
+      "files": [
+        "rotator/local/Rotator.command.cpp",
+        "rotator/remote/Rotator.can.encode.cpp"
+      ],
+      "source": "comment",
+      "wrapper_direct": false,
+      "wrapper_helper": false,
+      "wrapper": false
+    }
+  ],
+  "summary": {
+    "firmware_command_count": 399,
+    "wrapper_direct_count": 66,
+    "wrapper_helper_prefix_count": 20,
+    "parser_function_count": 24,
+    "mount_request_count": 25,
+    "mount_response_count": 25,
+    "test_files": [
+      "software/asdevlab/test/test_lx200_parser.cpp",
+      "software/asdevlab/test/test_onstep_adapter.cpp"
+    ],
+    "docmentions": {
+      "status": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "site": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "time": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "alignment": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "goto": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "sync": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "coordinates": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md",
+        "docs/mount_protocol_inventory.md",
+        "docs/mount_protocol_missing.md",
+        "docs/mount_protocol_statistics.md"
+      ],
+      "tracking": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "guide": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "manual motion": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "slew rate": [
+        "docs/mount_protocol_audit.md"
+      ],
+      "home": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "park": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "pec": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md",
+        "docs/mount_protocol_inventory.md"
+      ],
+      "limits": [
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "auxiliary": [
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "focuser": [
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "rotator": [
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md"
+      ],
+      "weather": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md"
+      ],
+      "gps": [
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md"
+      ],
+      "safety": [
+        "docs/OnstepCommandProtocol.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/mount_protocol_audit.md"
+      ],
+      "flip mirror": [
+        "docs/asdevlab-architecture.md",
+        "docs/asdevlab_onstep_backend_audit.md",
+        "docs/everything.md",
+        "docs/mount_protocol_audit.md",
+        "docs/mount_protocol_coverage.md"
+      ],
+      "mode": [
+        "docs/everything.md"
+      ]
+    }
+  },
+  "wrapper_cmds": [
+    ":$QZ?#",
+    ":A+#",
+    ":A1#",
+    ":AW#",
+    ":CM#",
+    ":D#",
+    ":F?#",
+    ":FM?#",
+    ":GA#",
+    ":GC#",
+    ":GD#",
+    ":GL#",
+    ":GR#",
+    ":GS#",
+    ":GT#",
+    ":GU#",
+    ":GW#",
+    ":GX80#",
+    ":GX81#",
+    ":GX90#",
+    ":GX93#",
+    ":GX98#",
+    ":GX9A#",
+    ":GX9B#",
+    ":GX9C#",
+    ":GX9E#",
+    ":GX9F#",
+    ":GXE9#",
+    ":GXU3#",
+    ":GZ#",
+    ":Gh#",
+    ":Go#",
+    ":Gu#",
+    ":MS#",
+    ":Me#",
+    ":Mn#",
+    ":Ms#",
+    ":Mw#",
+    ":Q#",
+    ":Qe#",
+    ":Qn#",
+    ":Qs#",
+    ":Qw#",
+    ":RF#",
+    ":RG#",
+    ":RM#",
+    ":RS#",
+    ":SG#",
+    ":SL#",
+    ":SS#",
+    ":SX9,1#",
+    ":SX9,2#",
+    ":SX9,3#",
+    ":SX97,0#",
+    ":SX97,1#",
+    ":TL#",
+    ":TQ#",
+    ":TS#",
+    ":Td#",
+    ":Te#",
+    ":h?#",
+    ":hC#",
+    ":hF#",
+    ":hP#",
+    ":hQ#",
+    ":hR#"
+  ],
+  "helper_prefixes": [
+    ":Me",
+    ":Mgd",
+    ":Mn",
+    ":Ms",
+    ":Mw",
+    ":Q",
+    ":RF",
+    ":RG",
+    ":RM",
+    ":RS",
+    ":ST",
+    ":SX9",
+    ":SX97",
+    ":Sa",
+    ":Sd",
+    ":Sr",
+    ":Sz",
+    ":TL",
+    ":TQ",
+    ":TS"
+  ],
+  "parser_funcs": [
+    "parseCoordinates",
+    "parseDeclination",
+    "parseEnvironment",
+    "parseFlipMirrorState",
+    "parseFocuserState",
+    "parseGotoState",
+    "parseGuide",
+    "parseGuideRate",
+    "parseHomeStatus",
+    "parseLimits",
+    "parseMountStatus",
+    "parseOrientation",
+    "parsePackedMountStatus",
+    "parseParkStatus",
+    "parsePecStatus",
+    "parseRightAscension",
+    "parseRotatorStatus",
+    "parseSite",
+    "parseSiteInfo",
+    "parseSlewRate",
+    "parseTime",
+    "parseTimeInfo",
+    "parseTracking",
+    "parseTrackingRate"
+  ],
+  "request_structs": [
+    "MountAlignmentRequest",
+    "MountAuxRequest",
+    "MountCoordinatesRequest",
+    "MountEnvironmentRequest",
+    "MountFlipMirrorRequest",
+    "MountFocuserRequest",
+    "MountGotoRequest",
+    "MountGuideRateRequest",
+    "MountGuideRequest",
+    "MountHomeRequest",
+    "MountLimitsRequest",
+    "MountManualMotionRequest",
+    "MountOrientationRequest",
+    "MountParkRequest",
+    "MountPecRequest",
+    "MountRotatorRequest",
+    "MountSafetyRequest",
+    "MountSiteRequest",
+    "MountSlewRateRequest",
+    "MountSlewRequest",
+    "MountStatusRequest",
+    "MountSyncRequest",
+    "MountTimeRequest",
+    "MountTrackingRateRequest",
+    "MountTrackingRequest"
+  ],
+  "response_structs": [
+    "MountAlignmentResponse",
+    "MountAuxResponse",
+    "MountCoordinatesResponse",
+    "MountEnvironmentResponse",
+    "MountFlipMirrorResponse",
+    "MountFocuserResponse",
+    "MountGotoResponse",
+    "MountGuideRateResponse",
+    "MountGuideResponse",
+    "MountHomeResponse",
+    "MountLimitsResponse",
+    "MountManualMotionResponse",
+    "MountOrientationResponse",
+    "MountParkResponse",
+    "MountPecResponse",
+    "MountRotatorResponse",
+    "MountSafetyResponse",
+    "MountSiteResponse",
+    "MountSlewRateResponse",
+    "MountSlewResponse",
+    "MountStatusResponse",
+    "MountSyncResponse",
+    "MountTimeResponse",
+    "MountTrackingRateResponse",
+    "MountTrackingResponse"
+  ],
+  "test_refs": {
+    "software/asdevlab/test/test_lx200_parser.cpp": [
+      "parseFlipMirrorState",
+      "parseFocuserState",
+      "parseGotoState",
+      "parseGuide",
+      "parseGuideRate",
+      "parseHomeStatus",
+      "parseLimits",
+      "parseMountStatus",
+      "parseParkStatus",
+      "parseSiteInfo",
+      "parseSlewRate",
+      "parseTime",
+      "parseTracking",
+      "parseTrackingRate"
+    ],
+    "software/asdevlab/test/test_onstep_adapter.cpp": [
+      "getEnvironment",
+      "getOrientation",
+      "getRotator",
+      "setGuideRate"
+    ]
+  },
+  "docmentions": {
+    "status": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "site": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "time": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "alignment": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "goto": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "sync": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "coordinates": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md",
+      "docs/mount_protocol_inventory.md",
+      "docs/mount_protocol_missing.md",
+      "docs/mount_protocol_statistics.md"
+    ],
+    "tracking": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "guide": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "manual motion": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "slew rate": [
+      "docs/mount_protocol_audit.md"
+    ],
+    "home": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "park": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "pec": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md",
+      "docs/mount_protocol_inventory.md"
+    ],
+    "limits": [
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "auxiliary": [
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "focuser": [
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "rotator": [
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md"
+    ],
+    "weather": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md"
+    ],
+    "gps": [
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md"
+    ],
+    "safety": [
+      "docs/OnstepCommandProtocol.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/mount_protocol_audit.md"
+    ],
+    "flip mirror": [
+      "docs/asdevlab-architecture.md",
+      "docs/asdevlab_onstep_backend_audit.md",
+      "docs/everything.md",
+      "docs/mount_protocol_audit.md",
+      "docs/mount_protocol_coverage.md"
+    ],
+    "mode": [
+      "docs/everything.md"
+    ]
+  }
+}

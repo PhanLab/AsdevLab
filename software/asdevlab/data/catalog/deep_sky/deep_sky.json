@@ -1,0 +1,270 @@
+[
+  {
+    "id": "dso_m31",
+    "name": "Andromeda Galaxy",
+    "display_name": "Andromeda Galaxy",
+    "type": "galaxy",
+    "alias": [
+      "M31",
+      "Andromeda"
+    ],
+    "magnitude": 3.44,
+    "ra": 0.7123055555555555,
+    "dec": 41.26916666666666,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Andromeda",
+    "messier": "31",
+    "ngc": "224",
+    "ic": "",
+    "fun_fact": "The Andromeda Galaxy is the closest major spiral galaxy to our Milky Way and is on a collision course with it in about 4.5 billion years."
+  },
+  {
+    "id": "dso_m32",
+    "name": "Messier 32",
+    "display_name": "Messier 32",
+    "type": "galaxy",
+    "alias": [
+      "M32",
+      "NGC 221"
+    ],
+    "magnitude": 8.08,
+    "ra": 0.7116111111111111,
+    "dec": 40.86527777777778,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Andromeda",
+    "messier": "32",
+    "ngc": "221",
+    "ic": "",
+    "fun_fact": "M32 is a dwarf elliptical galaxy that acts as a satellite to the much larger Andromeda Galaxy."
+  },
+  {
+    "id": "dso_m33",
+    "name": "Triangulum Galaxy",
+    "display_name": "Triangulum Galaxy",
+    "type": "galaxy",
+    "alias": [
+      "M33",
+      "Triangulum"
+    ],
+    "magnitude": 5.72,
+    "ra": 1.564138888888889,
+    "dec": 30.660277777777775,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Triangulum",
+    "messier": "33",
+    "ngc": "598",
+    "ic": "",
+    "fun_fact": "The Triangulum Galaxy is the third-largest member of the Local Group and is one of the most distant objects visible to the naked eye under exceptionally dark skies."
+  },
+  {
+    "id": "dso_orion_nebula",
+    "name": "Orion Nebula",
+    "display_name": "Orion Nebula",
+    "type": "nebula",
+    "alias": [
+      "M42",
+      "NGC 1976"
+    ],
+    "magnitude": 4.0,
+    "ra": 5.5881,
+    "dec": -5.3911,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Orion",
+    "messier": "42",
+    "ngc": "1976",
+    "ic": "",
+    "fun_fact": "The Orion Nebula is one of the brightest diffuse nebulae in the sky and a stellar nursery."
+  },
+  {
+    "id": "dso_ngc7000",
+    "name": "North America Nebula",
+    "display_name": "North America Nebula",
+    "type": "nebula",
+    "alias": [
+      "NGC 7000"
+    ],
+    "magnitude": 4.0,
+    "ra": 20.953,
+    "dec": 44.318,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Cygnus",
+    "messier": "",
+    "ngc": "7000",
+    "ic": "",
+    "fun_fact": "The North America Nebula is an emission nebula that resembles the continent of North America in photographs."
+  },
+  {
+    "id": "dso_betelgeuse",
+    "name": "Betelgeuse",
+    "display_name": "Betelgeuse",
+    "type": "star",
+    "alias": [
+      "Alpha Orionis"
+    ],
+    "magnitude": 0.5,
+    "ra": 5.9195,
+    "dec": 7.4067,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Orion",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Betelgeuse is a red supergiant nearing the end of its life."
+  },
+  {
+    "id": "dso_crab_nebula",
+    "name": "Crab Nebula",
+    "display_name": "Crab Nebula",
+    "type": "nebula",
+    "alias": [
+      "M1",
+      "NGC 1952"
+    ],
+    "magnitude": 8.4,
+    "ra": 5.5753,
+    "dec": 22.0145,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Taurus",
+    "messier": "1",
+    "ngc": "1952",
+    "ic": "",
+    "fun_fact": "The Crab Nebula is the remnant of a supernova observed in 1054 CE."
+  },
+  {
+    "id": "dso_whirlpool",
+    "name": "Whirlpool Galaxy",
+    "display_name": "Whirlpool Galaxy",
+    "type": "galaxy",
+    "alias": [
+      "M51",
+      "NGC 5194"
+    ],
+    "magnitude": 8.4,
+    "ra": 13.498,
+    "dec": 47.195,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Canes Venatici",
+    "messier": "51",
+    "ngc": "5194",
+    "ic": "",
+    "fun_fact": "The Whirlpool Galaxy is an interacting grand-design spiral galaxy."
+  },
+  {
+    "id": "dso_helix",
+    "name": "Helix Nebula",
+    "display_name": "Helix Nebula",
+    "type": "nebula",
+    "alias": [
+      "NGC 7293"
+    ],
+    "magnitude": 7.3,
+    "ra": 22.974,
+    "dec": -20.837,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Aquarius",
+    "messier": "",
+    "ngc": "7293",
+    "ic": "",
+    "fun_fact": "The Helix Nebula is one of the closest planetary nebulae to Earth."
+  },
+  {
+    "id": "dso_pleiades",
+    "name": "Pleiades",
+    "display_name": "Pleiades",
+    "type": "open_cluster",
+    "alias": [
+      "M45",
+      "Seven Sisters"
+    ],
+    "magnitude": 1.6,
+    "ra": 3.787,
+    "dec": 24.114,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Taurus",
+    "messier": "45",
+    "ngc": "1432",
+    "ic": "",
+    "fun_fact": "The Pleiades is an open star cluster visible to the naked eye."
+  },
+  {
+    "id": "dso_horsehead",
+    "name": "Horsehead Nebula",
+    "display_name": "Horsehead Nebula",
+    "type": "nebula",
+    "alias": [
+      "Barnard 33"
+    ],
+    "magnitude": 6.8,
+    "ra": 5.603,
+    "dec": -2.45,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Orion",
+    "messier": "",
+    "ngc": "2024",
+    "ic": "",
+    "fun_fact": "The Horsehead Nebula is a dark nebula seen in silhouette against brighter emission."
+  },
+  {
+    "id": "dso_omega_centauri",
+    "name": "Omega Centauri",
+    "display_name": "Omega Centauri",
+    "type": "globular_cluster",
+    "alias": [
+      "NGC 5139"
+    ],
+    "magnitude": 3.7,
+    "ra": 13.46,
+    "dec": -47.48,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Centaurus",
+    "messier": "",
+    "ngc": "5139",
+    "ic": "",
+    "fun_fact": "Omega Centauri is the largest globular cluster in the Milky Way."
+  },
+  {
+    "id": "dso_ring_nebula",
+    "name": "Ring Nebula",
+    "display_name": "Ring Nebula",
+    "type": "planetary_nebula",
+    "alias": [
+      "M57",
+      "NGC 6720"
+    ],
+    "magnitude": 8.8,
+    "ra": 18.896,
+    "dec": 33.029,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Lyra",
+    "messier": "57",
+    "ngc": "6720",
+    "ic": "",
+    "fun_fact": "The Ring Nebula is a planetary nebula with a bright ring-shaped structure."
+  }
+]

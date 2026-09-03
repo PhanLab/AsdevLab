@@ -1,0 +1,108 @@
+//--------------------------------------------------------------------------------------------------
+// local telescope rotator control, axis3
+
+#include "Rotator.h"
+
+#ifdef ROTATOR_PRESENT
+
+namespace {
+
+#if defined(AXIS3_KTECH_PRESENT)
+  const KTechDriverSettings DriverSettingsAxis3 = {AXIS3_DRIVER_MODEL, AXIS3_DRIVER_STATUS};
+  KTechMotor motor_3(3, AXIS3_REVERSE, &DriverSettingsAxis3);
+
+#elif defined(AXIS3_MKS42D_PRESENT)
+  const MksDriverSettings DriverSettingsAxis3 = {AXIS3_DRIVER_MODEL, AXIS3_DRIVER_STATUS};
+  Mks42DMotor motor_3(3, AXIS3_REVERSE, &DriverSettingsAxis3, AXIS3_STEPS_PER_DEGREE);
+
+#elif defined(AXIS3_SERVO_PRESENT)
+  ServoControl servoControlAxis3;
+
+  #if AXIS3_ENCODER == AB
+    Quadrature encAxis3(3, AXIS3_ENCODER_A_PIN, AXIS3_ENCODER_B_PIN);
+  #elif AXIS3_ENCODER == AB_ESP32
+    QuadratureEsp32 encAxis3(3, AXIS3_ENCODER_A_PIN, AXIS3_ENCODER_B_PIN);
+  #elif AXIS3_ENCODER == CW_CCW
+    CwCcw encAxis3(3, AXIS3_ENCODER_A_PIN, AXIS3_ENCODER_B_PIN);
+  #elif AXIS3_ENCODER == PULSE_DIR
+    PulseDir encAxis3(3, AXIS3_ENCODER_A_PIN, AXIS3_ENCODER_B_PIN);
+  #elif AXIS3_ENCODER == PULSE_ONLY
+    PulseOnly encAxis3(3, AXIS3_ENCODER_A_PIN, &servoControlAxis3.directionHint);
+  #elif AXIS3_ENCODER == VIRTUAL
+    VirtualEnc encAxis3(3);
+  #elif AXIS3_ENCODER == SERIAL_BRIDGE
+    SerialBridge encAxis3(3);
+  #endif
+
+  #if AXIS3_SERVO_FEEDBACK == PID
+    Pid feedbackAxis3(AXIS3_PID_P, AXIS3_PID_I, AXIS3_PID_D);
+  #elif AXIS3_SERVO_FEEDBACK == DUAL_PID
+    DualPid feedbackAxis3(AXIS3_PID_P, AXIS3_PID_I, AXIS3_PID_D, AXIS3_PID_P_GOTO, AXIS3_PID_I_GOTO, AXIS3_PID_D_GOTO, AXIS3_PID_SENSITIVITY);
+  #endif
+
+  #if AXIS3_SERVO_FLTR == KALMAN
+    KalmanFilter filterAxis3(AXIS3_SERVO_FLTR_MEAS_U, AXIS3_SERVO_FLTR_VARIANCE);
+  #elif AXIS3_SERVO_FLTR == ROLLING
+    RollingFilter filterAxis3(AXIS3_SERVO_FLTR_WSIZE);
+  #elif AXIS3_SERVO_FLTR == OFF
+    Filter filterAxis3;
+  #endif
+
+  const ServoPins DriverPinsAxis3 = {AXIS3_SERVO_PH1_PIN, AXIS3_SERVO_PH1_STATE, AXIS3_SERVO_PH2_PIN, AXIS3_SERVO_PH2_STATE, AXIS3_ENABLE_PIN, AXIS3_ENABLE_STATE, AXIS3_M0_PIN, AXIS3_M1_PIN, AXIS3_M2_PIN, AXIS3_M3_PIN, AXIS3_FAULT_PIN};
+  const ServoSettings DriverSettingsAxis3 = {AXIS3_DRIVER_MODEL, AXIS3_DRIVER_STATUS, AXIS3_SERVO_ACCELERATION};
+
+  #if AXIS3_DRIVER_MODEL == SERVO_EE
+    ServoEE driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3);
+  #elif AXIS3_DRIVER_MODEL == SERVO_PE
+    ServoPE driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3);
+  #elif AXIS3_DRIVER_MODEL == SERVO_TMC2130_DC
+    ServoTmc2130DC driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3);
+  #elif AXIS3_DRIVER_MODEL == SERVO_TMC5160_DC
+    ServoTmc5160DC driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3);
+  #elif AXIS3_DRIVER_MODEL == SERVO_TMC2209
+    ServoTmc2209 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_MOTOR_STEPS_PER_DEGREE/AXIS3_STEPS_PER_DEGREE, AXIS3_DRIVER_MICROSTEPS, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_DECAY, AXIS3_DRIVER_DECAY_GOTO);
+  #elif AXIS3_DRIVER_MODEL == SERVO_TMC5160
+    ServoTmc5160 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_MOTOR_STEPS_PER_DEGREE/AXIS3_STEPS_PER_DEGREE, AXIS3_DRIVER_MICROSTEPS, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_DECAY, AXIS3_DRIVER_DECAY_GOTO);
+  #elif AXIS3_DRIVER_MODEL == SERVO_KTECH
+    ServoKTech driver3(3, &DriverSettingsAxis3, AXIS3_MOTOR_STEPS_PER_DEGREE/AXIS3_STEPS_PER_DEGREE);
+  #endif
+
+  ServoMotor motor_3(3, AXIS3_REVERSE, ((ServoDriver*)&driver3), &filterAxis3, &encAxis3, AXIS3_ENCODER_ORIGIN, AXIS3_ENCODER_REVERSE == ON, &feedbackAxis3, &servoControlAxis3);
+
+#elif defined(AXIS3_STEP_DIR_PRESENT)
+  const StepDirDriverPins DriverPinsAxis3 = {AXIS3_M0_PIN, AXIS3_M1_PIN, AXIS3_M2_PIN, AXIS3_M2_ON_STATE, AXIS3_M3_PIN, AXIS3_DECAY_PIN, AXIS3_FAULT_PIN};
+  const StepDirDriverSettings DriverSettingsAxis3 = {AXIS3_DRIVER_MODEL, AXIS3_DRIVER_STATUS, AXIS3_DRIVER_MICROSTEPS, AXIS3_DRIVER_MICROSTEPS_GOTO, AXIS3_DRIVER_DECAY, AXIS3_DRIVER_DECAY_GOTO};
+  #if AXIS3_DRIVER_MODEL >= STEP_DIR_DRIVER_FIRST && AXIS3_DRIVER_MODEL < TMC_DRIVER_FIRST
+    StepDirGeneric driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3);
+  #elif AXIS3_DRIVER_MODEL == TMC2130
+    StepDirTmc2130 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #elif AXIS3_DRIVER_MODEL == TMC2160
+    StepDirTmc2160 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #elif AXIS3_DRIVER_MODEL == TMC2208
+    StepDirTmc2208 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #elif AXIS3_DRIVER_MODEL == TMC2209 || AXIS3_DRIVER_MODEL == TMC2226
+    StepDirTmc2209 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #elif AXIS3_DRIVER_MODEL == TMC2660
+    StepDirTmc2660 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #elif AXIS3_DRIVER_MODEL == TMC5160
+    StepDirTmc5160 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #elif AXIS3_DRIVER_MODEL == TMC5161
+    StepDirTmc5161 driver3(3, &DriverPinsAxis3, &DriverSettingsAxis3, AXIS3_DRIVER_IHOLD, AXIS3_DRIVER_IRUN, AXIS3_DRIVER_IGOTO, AXIS3_DRIVER_INTPOL);
+  #endif
+
+  const StepDirPins StepDirPinsAxis3 = {AXIS3_STEP_PIN, AXIS3_STEP_STATE, AXIS3_DIR_PIN, AXIS3_ENABLE_PIN, AXIS3_ENABLE_STATE};
+  StepDirMotor motor_3(3, AXIS3_REVERSE, &StepDirPinsAxis3, ((StepDirDriver*)&driver3));
+
+#else
+  #error "Configuration (Config.h): ROTATOR_PRESENT without AXIS3_DRIVER_MODEL should never happen!"
+#endif
+
+const AxisPins PinsAxis3 = {AXIS3_SENSE_LIMIT_MIN_PIN, AXIS3_SENSE_HOME_PIN, AXIS3_SENSE_LIMIT_MAX_PIN, {AXIS3_SENSE_HOME, AXIS3_SENSE_HOME_INIT, AXIS3_SENSE_HOME_DIST_LIMIT, AXIS3_SENSE_LIMIT_MIN, AXIS3_SENSE_LIMIT_MAX, AXIS3_SENSE_LIMIT_INIT}};
+const AxisSettings SettingsAxis3 = {AXIS3_STEPS_PER_DEGREE, {AXIS3_LIMIT_MIN, AXIS3_LIMIT_MAX}, AXIS3_BACKLASH_RATE};
+}
+
+Motor& motor3 = motor_3;
+
+Axis axis3(3, &PinsAxis3, &SettingsAxis3, AXIS_MEASURE_DEGREES);
+
+#endif

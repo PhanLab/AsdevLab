@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/media/img/facicon.png">
+    <link rel="shortcut icon" type="image/png" href="/media/img/facicon.png">
+    <link rel="stylesheet" href="/media/css/style.css">
+    <title>OpenLiveStacker</title>
+</head>
+<body>
+<div id="solver_result" style="display:none; text-align:center;position:absolute; left:0; top:0; z-index:-1">
+    <div id="solver_result_image_div">
+        <img alt="Solving result" src="" id="solver_result_image" />
+    </div>
+</div>
+<div id='video' ></div>
+<div id='thumb' style="display:none; position:absolute; right:0; top:0; z-index:-1;">
+    <span id="thumb_video"></span>
+</div>
+<div style="position:absolute; right:5mm; bottom:0; text-align:right;">
+    <span class="mount_connected_display_inline" style="display:none;" >
+        <span id="mount_ra_de_coord" style='display:none' >
+            Ra <span id="mount_ra"></span><br>
+            Dec <span id="mount_dec"></span><br>
+        </span>
+        <span id="mount_alt_az_coord" style='display:none' >
+            Alt <span id="mount_alt"></span><br>
+            Az <span id="mount_az"></span><br>
+        </span>
+    </span>
+    <span  id='stacking_ui_stats'></span>
+</div>
+<p id="open_camera"   style="display:inline" >Camera: <select id="camera_select"></select><button onclick="openCamera()">Open</button></p>
+<p id='std_controls' style="display:none;" >
+    <button class="comp_but settings_background" onclick="openConfigTab('config');">&nbsp;</button>
+    <button style="display:none" id="stacking_ui_stack" class="comp_but" onclick="openConfigTab('stack');">≡</button>
+    <button style="display:none" id="stacking_ui_solve" class="comp_but solve_background" onclick="openConfigTab('solve');">&nbsp;</button>
+    <button style="display:none" id="stacking_ui_pause" class="comp_but pause_background" onclick="ctlStack('pause');">&nbsp;</button>
+    <button style="display:none" id="stacking_ui_resume" class="comp_but resume_background" onclick="resumeStack();">&nbsp;</button>
+    <button style="display:none" id="stacking_ui_cancel" class="comp_but cancel_background" onclick="ctlStack('cancel');" >&nbsp;</button>
+    <button style="display:none" id="stacking_ui_save" class="comp_but save_background" onclick="ctlStack('save');" >&nbsp;</button>
+    <button style="display:none" id="stacking_ui_pp" class="comp_but stretch_background" onclick="openConfigTab('pp');" >&nbsp;</button>
+    <button style="display:none" id="stacking_ui_sharp" class="comp_but sharp_background" onclick="openConfigTab('sharp');" >&nbsp;</button>
+    <button style="display:none" id="stacking_ui_stop" class="comp_but stop_background" onclick="stopStream();" >&nbsp;</button>
+    <button style="display:none" id="mount_ctl_icon" class="comp_but mount_background mount_connected_display_inline" onclick="openConfigTab('mount');" >&nbsp;</button>
+    <button style="display:none" id="error_notification" class="comp_but error_background" onclick='showErrorNotification();'>&nbsp;</button>
+</p>
+<button style="display:none; float:right" id="stacking_ui_live" class="comp_but" onclick="toggleThumbLive();">L</button>
+
+<div id="focuser_controls" style="display:none; z-index:1;">
+<p>
+    <table>
+    <tr>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove(-1,'s');">←</button></td>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove( 1,'s');">→</button></td>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove(0,'')" >Go</button>
+        <td><button class="mount_sq_but" onclick="showFocuserControls(false);" >X</button></td>
+    </tr>
+    <tr>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove(-1,'m');">⇇</button></td>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove( 1,'m');">⇉</button></td>
+        <td colspan="2"><input class="mount_input focuser_pos_cls" id="focuser_position" type="number" value="" /></td>
+    </tr>
+    <tr>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove(-1,'l');">⬱</button></td>
+        <td><button class="mount_sq_but focuser_move" onclick="focuserMove( 1,'l');">⇶</button></td>
+        <td colspan="2"><button class="focuser_rect_but" onclick="focuserAbort()">Abort</button></td>
+    </tr>
+    </table>
+</p>
+</div>
+
+
+
+<div id="mount_controls" style="display:none; z-index:1;">
+<p>
+    <table>
+    <tr>
+        <td><button id="mount_manual_sync" style='display:none' class="mount_sync mount_sq_but solve_background" >&nbsp;</button><button class="mount_no_sync mount_sq_but no_sync_background" >&nbsp;</button></td>
+        <td><button class="mount_sq_but N_background" id="slew_N" >&nbsp;</button></td>
+        <td><button class="mount_sq_but" onclick='showMount(false);' >X</button></td>
+    <tr>
+        <td><button class="mount_sq_but W_background" id="slew_W" >&nbsp;</button></td>
+        <td><button class="mount_sq_but" id="mount_slew_speed" onclick='slew("",null)' >5</button></td>
+        <td><button class="mount_sq_but E_background" id="slew_E" >&nbsp;</button></td>
+    </tr>
+    <tr>
+        <td><button class="mount_sq_but slow_background" onclick='mountUpdateSlewSpeedUI(-1)'>&nbsp;</button></td>
+        <td><button class="mount_sq_but S_background" id="slew_S" >&nbsp;</button></td>
+        <td><button class="mount_sq_but fast_background" onclick='mountUpdateSlewSpeedUI(+1)' >&nbsp;</button></td>
+    </tr>
+    <tr>
+        <td>
+            <button style='display:none' class="mount_sq_but mount_sync" onclick='mountGoToSelected()' >Go</button>
+            <button class="mount_sq_but mount_no_sync" ><strike>Go</strike></button>
+        </td>
+        <td colspan="2"><input oninput="updateMountRADE(this.value)" class="mount_input" id="mount_object" type="text"></input></td>
+    </tr>
+    </table>
+</p>
+</div>
+<p id="short_message"></p>
+<div id='zoom_controls' style="display:none; position: absolute; bottom: 1mm; left: 1mm">
+    <button class="comp_but" onclick="zoom(+1);">+</button>
+    <button class="comp_but" onclick="zoom(-1);">-</button>
+    <span id="current_zoom"></span>
+</div>
+<div class="config_div" id="stack" style="display:none; background-color:black;">
+    <span style="position:absolute; right:1mm; top:1mm">
+        <button class="incdec_but" onclick="showStack(false);">X</button>
+    </span>
+    <p>
+        <button onclick="selectStackConfig('main');">Main</button>
+        <button onclick="selectStackConfig('filters');">Filters</button>
+        <button onclick="selectStackConfig('saving');">Saving</button>
+        <button id="dithering_button" onclick="selectStackConfig('dithering');" style='display:none'>Dithering</button>
+    <p>
+    <div id="stack_tab_main" class="config_tab" >
+    <table>
+    <tr class="stack_opt dso_config calib_config plan_config dynamic_config" >
+        <td><button onclick='startStack();'>Start</button></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr class="dso_config stack_opt" ><td>Object</td><td><input class="saved_input wide_input" oninput="updateRADE(this.value)" id="stack_object" type="text" value="" ></td><td>'M31' or Ra/Dec '14:34, -15:08'</td></tr>
+    <tr><td><span class="dso_config stack_opt">Extra </span> Name</td><td><input class="val_input saved_input" id="stack_name" type="text" value="" ></td><td>&nbsp;</td></tr>
+    <tr>
+        <td>Stacking</td>
+        <td colspan="2">
+            <select id="stack_type" class="saved_input" onchange='updateStackSelect()'>
+               <option value="dso" selected>Deep Space Object</option>
+               <option value="planetary">Planetary</option>
+               <option value="dynamic">Non-Tracking Dynamic</option>
+               <option value="calibration">Calibration Frame</option> 
+            </select>
+        </td>
+    </tr>
+    <tr class="dso_config stack_opt" ><td>Exposure Mpl.</td><td><input class="saved_input" id="stack_synthetic_exposure_mpl" type="number" min="1" max="50" value="1"></td><td>&nbsp;</td></tr>
+    <tr class="dso_config stack_opt" ><td>Derotate</td><td><input class="saved_input" id="stack_field_derotation" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="dso_config stack_opt" ><td>Derotate Mirror</td><td><input class="saved_input" id="stack_image_flip" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="dso_config dynamic_config calib_config stack_opt" ><td>Remove Hot Pixels</td><td><input class="saved_input" id="stack_remove_hot_pixels" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="dso_config dynamic_config stack_opt" ><td>Remove Gradient</td><td><input class="saved_input" id="stack_remove_gradient" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="dso_config stack_opt" ><td>Remove Satellites</td><td><input class="saved_input" id="stack_remove_satellites" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="dso_config stack_opt" ><td>Target</td><td>RA:<input class="val_input" id="stack_ra" type="text" disabled ></td><td>DE:<input class="val_input" id="stack_de" type="text" disabled ></td></tr>
+    <tr class="dso_config stack_opt plan_config" ><td colspan="3" style="text-align:center;"><b>Calibration</b></td></tr>
+    <tr class="dso_config stack_opt dynamic_config plan_config" ><td>Darks</td><td colspan="2"><select id="stack_darks" onchange="saveCalibValue(this);" ></select></td></tr>
+    <tr class="dso_config stack_opt dynamic_config plan_config" ><td>Flats</td><td colspan="2"><select id="stack_flats" onchange="saveCalibValue(this);"></select></td></tr>
+    <tr class="dso_config stack_opt dynamic_config plan_config" ><td>Dark Flats</td><td colspan="2"><select id="stack_dark_flats" onchange="saveCalibValue(this); "></select></td></tr>
+    <tr class="calib_config stack_opt" style='display:none'>
+        <td>White Screen</td>
+        <td>
+            <input class="saved_input val_input" id="white_delay" value="0" min="0" max="1000" type="number" />
+        </td>
+        <td>show white screen for</td>
+    </tr>
+    <tr class="stack_opt dso_config plan_config calib_config" >
+        <td>Delay (s)</td>
+        <td>
+            <input class="saved_input val_input" id="start_delay" value="0" min="0" max="10" type="number" />
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+
+    </table>
+    </div>
+    <div id="stack_tab_filters" class="config_tab" style="display:none" >
+    <table>
+    
+    <tr class="dso_config stack_opt dynamic_config plan_config" ><td colspan="3" style="text-align:center;"><b>Filters</b></td></tr>
+    <tr class="stack_opt plan_config" ><td>Drop First Frames</td><td><input class="saved_input" id="stack_filters_remove_first" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="dynamic_config stack_opt" >
+        <td>Delay After Move (s)</td>
+        <td><input class="saved_input" type="range" id="stack_filters_dynamic_delay" min="1" max="10" step="1" value="2" oninput="updateFltSlider('filters_dynamic_delay');" ></td>
+        <td><output id="out_filters_dynamic_delay">2</output></td>
+    </tr>
+    <tr class="dso_config stack_opt plan_config" >
+        <td>Min Stat Size</td>
+        <td><input class="saved_input" type="range" id="stack_filters_min_stat_size" min="3" max="30" step="1" value="10" oninput="updateFltSlider('filters_min_stat_size');" ></td>
+        <td><output id="out_filters_min_stat_size">10</output></td>
+    </tr>
+    <tr class="dso_config stack_opt plan_config" >
+        <td>Sharpness %</td>
+        <td><input class="saved_input" type="range" id="stack_filters_sharpness_percentile" min="10" max="100" step="10" value="100" oninput="updateFltSlider('filters_sharpness_percentile');" ></td>
+        <td><output id="out_filters_sharpness_percentile">100</output></td>
+    </tr>
+    <tr class="dso_config stack_opt plan_config" >
+        <td>Reg. Quality %</td>
+        <td><input class="saved_input" type="range" id="stack_filters_reg_score_percentile" min="10" max="100" step="10" value="100" oninput="updateFltSlider('filters_reg_score_percentile');" ></td>
+        <td><output id="out_filters_reg_score_percentile">100</output></td>
+    </tr>
+    <tr class="dso_config stack_opt plan_config" >
+        <td>Brightness Std</td>
+        <td><input class="saved_input" type="range" id="stack_filters_avg_brightness_sigma" min="1" max="5" step="0.5" value="5" oninput="updateFltSlider('filters_avg_brightness_sigma');" ></td>
+        <td><output id="out_filters_avg_brightness_sigma">all</output></td>
+    </tr>
+
+    </table>
+    </div>
+
+    <div id="stack_tab_saving" class="config_tab"  style="display:none">
+    <table>
+    <tr class="dso_config stack_opt plan_config calib_config dynamic_config" ><td colspan="3" style="text-align:center;"><b>Saving</b></td></tr>
+    <tr class="stack_opt dso_config calib_config plan_config dynamic_config" ><td>Save All Frames</td><td><input class="saved_input" id="stack_save_data" type="checkbox" ></td><td>&nbsp;</td></tr>
+    <tr class="stack_opt dso_config plan_config dynamic_config" ><td>Save TIFF</td><td><input class="saved_input" id="stack_save_tiff" type="checkbox" checked ></td><td>&nbsp;</td></tr>
+    <tr class="stack_opt dynamic_config" >
+        <td>Auto Save If</td>
+        <td>
+            <input class="saved_input val_input" id="stack_save_after" value="0" min="0" max="60" step="1" type="number" />
+        </td>
+        <td>seconds of data collected</td></tr>
+    </table>
+    </div>
+    <div id="stack_tab_dithering" class="config_tab"  style="display:none">
+    <table>
+        <tr class="dso_config stack_opt" ><td colspan="2" style="text-align:center;"><b>Dithering</b></td></tr>
+        <tr class="stack_opt dso_config" ><td>Enable</td><td><input class="saved_input"  id="stack_dithering_enabled" type="checkbox" ></td></tr>
+        <tr class="stack_opt dso_config" ><td>Radius (arcsec)</td><td><input class="saved_input"  id="stack_dithering_radius" min="1" max="50" step="1" value="10" > (1''-30'')</td></tr>
+        <tr class="stack_opt dso_config" ><td>Frequency (s)</td><td><input class="saved_input"  id="stack_dithering_frequency" min="10" max="3600" step="10" value="30" > (10s-3600s)</td></tr>
+        <tr class="stack_opt dso_config" ><td>Delay (s)</td><td><input class="saved_input"  id="stack_dithering_delay" min="1"  max="600"  step="1" value="3" > (1s-600s)</td></tr>
+    </table>
+    </div>
+
+</div>
+
+<div class="config_div" id="sharp_control" style="display:none; background-color: transparent; ">
+    <span style="position:absolute; right:1mm; top:1mm">
+        <button class="incdec_but" onclick="showSharp(false);">X</button>
+    </span>
+    <p>
+        <b>Deconvolution:</b>
+    </p>
+    <p>
+        <span class="range_title" >Sigma:</span><input class="saved_input range_inp" type="range" id="stack_deconv_sigma" min="0" max="5.0" step="0.1" value="3.0" oninput="updateShrapCtl('deconv_sigma',1,this.value)" ><output id="out_deconv_sigma">3.0</output>
+    </p>
+    <p>
+        <span class="range_title" >Iters:</span><input class="saved_input range_inp" type="range" id="stack_deconv_iters" min="5" max="30" step="1" value="10" oninput="updateShrapCtl('deconv_iters',0,this.value)" ><output id="out_deconv_iters">10</output>
+    </p>
+    <p>
+        <b>Unsharp Mask:</b>
+    </p>
+    <p>
+        <span class="range_title" >Sigma:</span><input class="saved_input range_inp" type="range" id="stack_unsharp_sigma" min="0" max="5.0" value="3.0" step="0.1" oninput="updateShrapCtl('unsharp_sigma',1,this.value)" ><output id="out_unsharp_sigma">3.0</output>
+    </p>
+    <p>
+    <p>
+        <span class="range_title" >Strength:</span><input class="saved_input range_inp" type="range" id="stack_unsharp_strenght" min="0.1" max="5.0" value="1.5" step="0.1" oninput="updateShrapCtl('unsharp_strength',1,this.value)" ><output id="out_unsharp_strength">1.5</output>
+    </p>
+</div>
+
+<div class="config_div" id="pp_control" style="display:none; background-color: transparent; ">
+    <span style="position:absolute; right:1mm; top:1mm">
+        <button class="incdec_but" onclick="showPP(false);">X</button>
+    </span>
+    <p>
+        Auto:<input id="stack_auto_stretch" checked type="checkbox" onchange='updateAutoPP()' >
+        <span id="dynamic_parameters" style='display:none'>
+            (<span id="p_gain"></span>·x-<span id="p_cut"></span>)<sup>1/<span id="p_gamma"></span></sup>
+        </span>
+    </p>
+    <div id="hist_ctl">
+        <button id="hist_ctl_valid" onclick="hZoom('vis')" class="hctl">vis</button><button id="hist_ctl_full" class="hctl" onclick="hZoom('all')" >all</button><button onclick="hZoom('0')"id="hist_ctl_black" class="hctl">⌕ 0</button><button id="hist_ctl_med" class="hctl" onclick="hZoom('0.5')" >⌕ ½</button><button id="hist_ctl_white" class="hctl" onclick="hZoom('1')" >⌕ 1</button>
+    </div>
+    <div id="hist_div"> 
+        <canvas id="hist_canvas" width="1024" height="100" ></canvas>
+    </div>
+</div>
+<div class="config_div" id="config" style="display:none; background-color:transparent;">
+    <span style="position:absolute; right:1mm; top:1mm">
+        <button class="incdec_but" onclick="showConfig(false);">X</button>
+    </span>
+    <p>
+        <button onclick="selectConfig('camera');">Camera</button>
+        <button onclick="selectConfig('general');">General</button>
+        <button onclick="selectConfig('profiles');">Profiles</button>
+        <button onclick="selectConfig('calib');">Calib.</button>
+        <button onclick="selectConfig('astap');">ASTAP</button>
+        <button onclick="selectConfig('mount');">Mount</button>
+        <button onclick="selectConfig('bino');">Bino</button>
+        <button onclick="selectConfig('focuser');" class="alpha_features" >Focuser</button>
+    <p>
+    <div id="config_tab_camera" class="config_tab" >
+        <p>Format: <select id="stream_format"></select> <span class="nowr">FPS lim.<input id="stream_max_framerate" class="val_input saved_input" type="number" step="1" value="10" /></span> <button onclick="startStream()" >Stream</button></p>
+        <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Value</td>
+                <td>&nbsp;</td>
+                <td>Range</td>
+                <td>Dflt</td>
+            </tr>
+        <thead>
+        <tbody id='cam_controls' >
+        </tbody>
+        </table>
+    </div>
+    <div id="config_tab_general" class="config_tab" style="display:none">
+        <p>
+            <span id="FS_tooggle" class="nowr" ><label for="FS_checked">Full screen</label><input id="FS_checked" type="checkbox" onchange="toggleFS(this.checked)" ></span>
+        </p>
+        <p> 
+            <span class="nowr" >Lat:<input class="val_input saved_input" id="stack_lat" type="number" step="0.001" ></span>
+        </p>
+        <p>
+            <span class="nowr" >Lon:<input class="val_input saved_input" id="stack_lon" type="number" step="0.001"></span>
+        </p>
+        <p>
+            <span id="extra_opt_toggle" class="nowr" ><label for="extra_opt_checked">Alpha Features</label><input class = "saved_input" id="extra_opt_checked" type="checkbox" onchange="enableAlphaFeatures(this.checked)" ></span>
+        </p>
+        <p><button id="manual_geolocation" onclick="getBrowserGeolocation();">Get Geolocation</button></p>
+        <p>
+            <select id="font_size_ctl" class="saved_input" onchange="updateFontSize()">
+                <option value="-1" >Small</option>
+                <option value="0" selected  >Normal</option>
+                <option value="2" >Large</option>
+                <option value="4" >XLarge</option>
+            </select>
+        </p>
+    </div>
+    
+    <div id="config_tab_profiles" class="config_tab" style="display:none" >
+        <div id="profile_selection">
+            <p>
+                <button onclick="profileApply();">Apply</button> <select style="width:40%" id="profile_select" ></select> 
+            </p>
+            <p>
+                <button onclick="profileNew();">New</button>
+                <button onclick="profileDeleteSelected()">Delete</button>
+            </p>
+        </div>
+        <div id="profile_prepare">
+            <p>Name: <input class="val_input" id="new_profile_name" type="text" /></p>
+            <ul id="profile_items"></ul>
+            <p>Darks:<select id="profile_darks" ></select></p>
+            <p>
+                <button onclick="profileSave();">Save</button>
+                <button onclick="selectProfile();">Cancel</button>
+            </p>
+        </div>
+    </div>
+
+    <div id="config_tab_astap" class="config_tab" style="display:none">
+        <p>Ready databases: <span id="astap_ready_list">None</span></p>
+        <p>DB:
+            <select id="astap_download_db" onchange="switchASTAPURL();">
+                <option value="d05" >D05, 6&deg;&gt;FOV&gt;0.6&deg;, 98MB </option>
+                <option value="d20" >D20, 6&deg;&gt;FOV&gt;0.3&deg;, 382MB</option>
+                <option value="d50" >D50, 6&deg;&gt;FOV&gt;0.2&deg;, 860MB</option>
+                <option value="g05" >G05, 20&deg;&gt;FOV&gt;3.0&deg;, 97MB </option>
+                <option value="w08" >W08, FOV&gt;20&deg;, 0.3MB </option>
+            </select></p>
+        <p>URL: <input id="astap_download_url" type="text" value="" style="width:50%" /></p>
+        <p>
+            <button id='download_start' onclick='downloadStart()'>Download</button><button id='download_stop' onclick='downloadStop()'>Cancel</button>
+            <span id='download_status'></span>
+        </p>
+    </div>
+    <div id="config_tab_bino" class="config_tab" style="display:none">
+        <div>
+            <table>
+		        <tr>
+                    <td><button onclick="openVRLocally()">Open VR</button></td>
+                    <td>
+                        <a href="/eyepiece.html">Link</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enable Bino</td>
+                    <td><input class="val_input saved_input" id="enable_binoviewers" type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>Screen Width (mm)</td>
+                    <td><input class="val_input saved_input" id="screen_width_mm" type="number" value="140" /></td>
+                </tr>
+                <tr>
+                    <td>Pupillary Distance (mm)</td>
+                    <td><input class="val_input saved_input" id="ipd_mm" type="number" value="60" /></td>
+                </tr>
+                <tr>
+                    <td>Gap (mm)</td>
+                    <td><input class="val_input saved_input" id="ipd_gap_mm" type="number" value="10" /></td>
+                </tr>
+                <tr>
+                    <td>FPS limit</td>
+                    <td><input class="val_input saved_input" id="eyepiece_fps_limit" type="number" min="1" max="60" value="1" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div id="config_tab_focuser" class="config_tab" style="display:none">
+        <div id="focuser_driver_selection" style='display:none' >
+            <p>Select Driver</p>
+            <p><select id="focuser_driver_name" onchange="focuserDriverSelect()"></select></p>
+            <p id="focuser_driver_option_p"><input id="focuser_driver_option" value="" type="text" ></p>
+            <p><button onclick="focuserStart();">Load</button></p>
+        </div>
+        <div id="focuser_connected_display_block" style="display:none">
+            <table>
+                <tr>
+                    <td colspan="2"><button onclick="showFocuserControls(true);">Open Focuser Controls</button></td>
+                </tr>
+                <tr>
+                    <td>Focuser range</td>
+                    <td><span id="focuser_range">?</span></td>
+                </tr>
+                <tr>
+                    <td>Small Step</td>
+                    <td><input class="val_input saved_input" id="focuser_step_s" type="number" value="10" /></td>
+                </tr>
+                <tr>
+                    <td>Medium Step</td>
+                    <td><input class="val_input saved_input" id="focuser_step_m" type="number" value="100" /></td>
+                </tr>
+                <tr>
+                    <td>Large Step</td>
+                    <td><input class="val_input saved_input" id="focuser_step_l" type="number" value="1000" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="config_tab_mount" class="config_tab" style="display:none">
+        <p><strong>Experimental</strong></p>
+        <p>Don't leave your telescope unattended.</p>
+        <hr style='border-color: inherit'>
+        <div id="mount_driver_selection" style='display:none' >
+            <p>Select Driver</p>
+            <p><select id="mount_driver_name" onchange="mountDriverSelect()"></select></p>
+            <p id="mount_driver_option_p"><input id="mount_driver_option" value="" type="text" ></p>
+            <p><button onclick="mountStart();">Load</button></p>
+        </div>
+        <div id="mount_connection_options" style='display:none'>
+            <p>Connection: <select id="mount_connection_type" onchange="mountConnTypeMod()"></select></p>
+            <p>Address/Port: <input id="mount_connection_address" type="text" oninput='document.getElementById("mount_connection_address_set").disabled=false;'></input>
+                <button onclick="mountConnStrSet()" disabled="disabled" id="mount_connection_address_set">Set</button>
+            <p><input id="mount_load_alignment" checked type="checkbox" /> <label for="mount_load_alignment" >Load Previous Alignment</label></p>
+            <p><button id="mount_connect_button" onclick="mountConnect()">Connect</button></p>
+        </div>
+        <div class="mount_connected_display_block" style="display:none">
+            <table>
+            <tr>
+                <td>
+                Tracking: 
+                </td>
+                <td>
+                    <select id="mount_tracking_mode" onchange="mountSetTrackingMode()">
+                        <option value="sidereal">Sidereal</option>
+                        <option value="solar">Solar</option>
+                        <option value="lunar">Lunar</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp; 
+                </td>
+                <td>
+                    <input type="checkbox" id="mount_is_tracking" onchange="mountSetTrackingMode()" >
+                    <label for="mount_is_tracking">Enabled</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Meridian:</td>
+                <td>
+                    <span id="mount_meridian_unsupported" >Not supported</span>
+                    <select id="mount_meridian_mode" onchange="mountSetMeridianMode()">
+                        <option value="stop" selected>Stop</option>
+                        <option value="flip" >Flip</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Min Altitude:</td><td><input type="number" id="mount_alt_low"  value="-90" min="-90" max="90" step="1" ></td></tr>
+            <tr><td>Max Altitude:</td><td><input type="number" id="mount_alt_high" value="90"  min="-90" max="90" step="1" ></td></tr>
+            <tr><td>&nbsp;</td><td><button onclick="setMoutAltLimits()" >Set Limits</button></td></tr>
+            <tr>
+                <td>Alignment:</td>
+                <td><span id="mount_alignment"></span></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><button id="mount_alignment_reset" onclick="mountResetAlignment()">Reset</button></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" id="mount_sun_allow" onchange="notifySunWarning();" />
+                    <label for="mount_sun_allow">Sun is searchable</label>
+                </td>
+            </tr>
+            <tr><td>Lat</td><td><span id="mount_lat"></span></td></tr>
+            <tr><td>Lon</td><td><span id="mount_lon"></span></td></tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" class='saved_input' id="show_ra_de" onchange="toggleRADE(this.checked);" /><label for="show_ra_de">Display on screen RA/DEC</label>
+                </td>
+            </tr>
+            <tr><td>RA </td><td><span id="mount_cfg_ra"></span></td></tr>
+            <tr><td>DEC</td><td><span id="mount_cfg_dec"></span></td></tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" class='saved_input' id="show_alt_az" onchange="toggleAltAz(this.checked);" /><label for="show_alt_az">Display on screen Alt/Az</label>
+                </td>
+            </tr>
+            <tr><td>Alt</td><td><span id="mount_cfg_alt"></span></td></tr>
+            <tr><td>Az </td><td><span id="mount_cfg_az"></span></td></tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div id="config_tab_calib" class="config_tab" style="display:none">
+        <table>
+        <thead>
+            <tr class="stack_opt" >
+                <td>Name</td>
+                <td>Width</td>
+                <td>Height</td>
+                <td>Date</td>
+                <td>&nbsp;</td>
+            </tr>
+        </thead>
+        <tbody id="calib_table" ></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="config_div" id="plate_solve_div" style="display:none; background-color:transparent;">
+    <span style="position:absolute; right:1mm; top:1mm">
+        <button class="incdec_but" onclick="showSolve(false);">X</button>
+    </span>
+    <div id="solver_config">
+        <p>
+            <button onclick="plateSolve();" >Solve</button>
+            <button class="mount_connected_display_inline" style="display:none" onclick="solveAndSync();" >Solve &amp; Sync</button>
+            <button class="mount_connected_display_inline" style="display:none" onclick="solveSyncAndGoTo();" >Solve, Sync &amp; GoTo </button>
+            <button class="mount_connected_display_inline" style="display:none" onclick="findObjectByCoord();" >Find Obj</button>
+            <button onclick="polarAlign();" >Pol. Align</button>
+        </p>
+        <p class="polar_align_second" style="display:none" >
+            <button onclick="polarAlign2nd()" >Polar Align 2nd Point</button>
+        </p>
+        <p>Object <input class="wide_input saved_input" id="solver_object" type="text" oninput='updateSolverRADE(this.value)'  value="" /> (M31, RA, DEC)</p>
+        <p>
+            <span class="nowr" >RA <input class="val_input" id="solver_ra" type="text" value="" disabled/>,</span>
+            <span class="nowr" >DEC <input class="val_input" id="solver_de" type="text" value="" disabled/></span>
+        </p>
+        <p style="display:none" class="mount_connected_display_block"><input type="checkbox" checked id="use_mount_coordinates" ><label for="use_mount_coordinates">Use Mount Position</label></p>
+        <p>
+            <span class="nowr">Pixel Size (μm) <input class="val_input saved_input" id="solver_pixel_size" type="number" step="0.01" value="" oninput='recalcFOV();' />,</span>
+            <span class="nowr">Focal Length (mm) <input class="val_input saved_input" id="solver_focal_length" type="number" value="" oninput='recalcFOV();' /></span>
+        </p>
+        <p>Vertical FOV (°) <input class="val_input" id="solver_fov" type="number" value="" step="0.001" /></p>
+        <p>Radius (°) <input class="val_input saved_input" id="solver_radius" type="number" min="0.1" max="180.0" step="0.1" value="5.0" /></p>
+        <p>Timeout (s) <input class="val_input saved_input" id="solver_timeout" type="number" min="5" max="120" step="5" value="10.0" /></p>
+    </div>
+    <div id="solver_status_div" style="display:none;" >
+        <p>
+            <select id="solver_units" class="saved_input" onchange='updateSolverTable();'>
+                <option value="az_dd_dd" selected>Alt/Az d.d°</option>
+                <option value="az_dm_dm" >Alt/Az d°m'</option>
+                <option value="rd_dd_dd" >RA/DE d.d°</option>
+                <option value="rd_dm_dm" >RA/DE d°m'</option>
+                <option value="rd_hm_dm" >RA/DE h:m:s, d°m'</option>
+            </select>
+        </p>
+        <p>Status: <span id="solver_status"></span></p>
+        <p><button onclick="solverRestart();" >Restart</button><input id="solver_auto_restart" type="checkbox" onchange="startSolvingIfNeeded();" /> <label for="solver_auto_restart">Continuous resolving every </label><input class="val_input saved_input" type="number" min="1" max="5" step="1" value="1" id="restart_solver_timeout" />s</p>
+        <p class="polar_align_second" style="display:none" >
+            <button onclick="polarAlign2nd()" >Polar Align 2nd Point</button>
+        </p>
+    </div>
+</div>
+<div class="alert_div" id="error_alert" style=" ">
+<p id="error_message">No error</p>
+<p>
+    <button onclick="confirmError();" id="confirm_message_button" >Ok</button>
+    <button onclick="hideError();" id="confirm_cancel_button" >Cancel</button>
+</p>
+</div>
+<div id="white_screen" ></div>
+<script src="/media/js/jsdb.js"></script>
+<script src="/media/js/vsop87_lib.js"></script>
+<script src="/media/js/code.js"></script>
+</body>
+</html>

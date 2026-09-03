@@ -1,0 +1,2 @@
+# No external runtime requirements; uses Python standard library.
+# Add packages here if you later introduce non-stdlib deps.

@@ -1,0 +1,9 @@
+[project]
+name = "asdevlab-webapp"
+version = "0.1.0"
+description = "ASDEVLAB web UI service"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[tool.metadata]
+authors = [ { name = "ASDEVLAB" } ]

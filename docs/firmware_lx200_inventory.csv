@@ -1,0 +1,163 @@
+command,family,firmware_file,line,description,wrapper,parser,tests
+:GA#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,23,Get mount altitude (returns DMS string),False,False,False
+:GAH#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,23,Get mount altitude (high precision),False,False,False
+:GD#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,40,Get mount declination (returns DMS),True,True,True
+:GDH#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,40,Get mount declination (high precision),False,False,False
+:GR#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,56,Get mount right ascension (returns HMS),True,True,True
+:GRH#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,56,Get mount right ascension (high precision),False,False,False
+:GT#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,72,Get tracking rate (numeric reply),True,True,True
+:GX4[n]#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,82,Extended :GX4 — get instrument/encoder angles or counts depending on index,False,False,False
+:GXE[m]#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,99,Extended :GXE — query mount settings/values (various subcodes),False,False,False
+:GXFn#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,114,Extended :GXF — get frequency/workload and related values,False,False,False
+:GXTD#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,134,Get tracking rate offset in Dec (numeric),False,False,False
+:GXTR#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,141,Get tracking rate offset in RA (numeric),False,False,False
+:GZ#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,150,Get mount azimuth (returns DMS),False,False,False
+:ST[H.H]#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,169,Set tracking rate (:ST — set tracking in Hz),True,False,False
+:SEO#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,186,Set coordinate origin for absolute encoders or mount memory,False,False,False
+":SX4[m],[n]#",Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,249,Set encoder axis [m] to value [n] (encoder sync operations),False,False,False
+":SXEM,[n]#",Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,336,Set mount type (saved to NV for next restart),False,False,False
+":SXTD,n.n#",Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,350,Set tracking rate offset Dec (numeric input),False,False,False
+":SXTR,n.n#",Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,360,Set tracking rate offset RA (numeric input),False,False,False
+:TS#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,374,Tracking rate: solar (alias),True,False,True
+:TK#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,375,Tracking rate: king (alias),False,False,False
+:TL#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,376,Tracking rate: lunar (alias),True,False,True
+:TQ#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,377,Tracking rate: sidereal (alias),True,False,True
+:T+#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Adjust master sidereal clock faster (EEPROM stored),False,False,False
+:T-#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Adjust master sidereal clock slower (EEPROM stored),False,False,False
+:TR#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Reset master sidereal clock to calculated rate,False,False,False
+:Te#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Tracking enable command,True,False,True
+:Td#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Tracking disable command,True,False,True
+:To#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Track full compensation on,False,False,False
+:Tr#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Track refraction compensation on,False,False,False
+:Tn#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Track compensation off,False,False,False
+:T1#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Track dual axis off (disable Dec tracking on Eq mounts),False,False,False
+:T2#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,400,Track dual axis on,False,False,False
+:$BD[n]#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,439,Set Dec/Alt backlash in arc-seconds,False,False,False
+:$BR[n]#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,442,Set RA/Azm backlash in arc-seconds,False,False,False
+%BD#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,465,Get Dec/Alt antibacklash value in arc-seconds,False,False,False
+%BR#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,467,Get RA/Azm antibacklash value in arc-seconds,False,False,False
+:SO#,Mount,firmware/OnStepX/src/telescope/mount/Mount.command.cpp,199,Transmit ':SO#' to SERIAL_ENCODER when setting absolute encoder origin,False,False,False
+:B+#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,97,Increase reticle/LED brightness (handled by telescope),False,False,False
+:B-#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,99,Decrease reticle/LED brightness (handled by telescope),False,False,False
+:EC[s]#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,125,Echo provided string as debug message,False,False,False
+:ERESET#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,138,Reset the MCU (HAL_RESET),False,False,False
+:ENVRESET#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,155,Wipe NV memory (invalidate next boot),False,False,False
+:ESPFLASH#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,162,Enter ESP flash mode (ESP flashing sequence),False,False,False
+:GX9A#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,214,Get external temperature (deg C) via weather subsystem,False,False,False
+:GX9B#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,221,Get pressure (mb) via weather subsystem,False,False,False
+:GX9C#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,228,Get relative humidity (%) via weather subsystem,False,False,False
+:GX9E#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,235,Get dew point (deg C) via weather subsystem,False,False,False
+:GX9F#,Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,242,Get MCU temperature (deg C) if available,False,False,False
+":SX9A,[sn.n]#",Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,263,Set temperature (deg C) via weather interface,False,False,False
+":SX9B,[n.n]#",Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,269,Set pressure (mb) via weather interface,False,False,False
+":SX9C,[n.n]#",Auxiliary,firmware/OnStepX/src/telescope/Telescope.command.cpp,275,Set relative humidity (%) via weather interface,False,False,False
+:B+#,ST4,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,138,Transmit ':B+#' to local serial from ST4 hand-control (increase BRIGHT/RATE action),False,False,False
+:B-#,ST4,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,150,Transmit ':B-#' to local serial from ST4 hand-control (decrease BRIGHT/RATE action),False,False,False
+:CS#,ST4,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,168,Transmit ':CS#' (sync/accept align) from ST4 controls,False,False,False
+:F12#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,178,Focuser 1 slow move command (transmitted via SERIAL_LOCAL),False,False,False
+:F22#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,178,Focuser 2 slow move command (transmitted via SERIAL_LOCAL),False,False,False
+:F14#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,179,Focuser 1 fast move command (transmitted via SERIAL_LOCAL),False,False,False
+:F24#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,179,Focuser 2 fast move command (transmitted via SERIAL_LOCAL),False,False,False
+:F1-#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,180,Focuser 1 move in (transmitted),False,False,False
+:F2-#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,180,Focuser 2 move in (transmitted),False,False,False
+:F1+#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,181,Focuser 1 move out (transmitted),False,False,False
+:F2+#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,181,Focuser 2 move out (transmitted),False,False,False
+:F1Q#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,200,"Focuser 1 stop/query (transmitted), often combined as ':F1Q#:F2Q#'",False,False,False
+:F2Q#,Focuser,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,200,Focuser 2 stop/query (transmitted),False,False,False
+:LN#,ST4,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,215,Transmit ':LN#' (select next user catalog) from ST4 controls,False,False,False
+:LB#,ST4,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,218,Transmit ':LB#' (select previous user catalog) from ST4 controls,False,False,False
+:LIG#,ST4,firmware/OnStepX/src/telescope/mount/st4/St4.cpp,221,Transmit ':LIG#' (goto catalog object) from ST4 controls,False,False,False
+:LW[s]#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,83,"Write catalog object information (name,type,RA,Dec) to library",False,False,False
+:LB#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,19,Find previous catalog object under current constraints,False,False,False
+:LC[n]#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,26,Set current target to catalog object number,False,False,False
+:LI#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,38,"Get object information (name,type) for current target",False,False,False
+:LIG#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,51,Get object info and set goto target,False,False,False
+:LR#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,61,Get catalog object info including RA/Dec and advance record,False,False,False
+:LN#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,123,Find next catalog object under current constraints,False,False,False
+:L$#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,130,Move to catalog name record (returns numeric),False,False,False
+:LD#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,137,Clear current catalog record,False,False,False
+:LL#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,144,Clear current catalog (all records),False,False,False
+:L!#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,151,Clear entire library (all catalogs),False,False,False
+:L?#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,158,Get count of free library records,False,False,False
+:Lo[n]#,Library,firmware/OnStepX/src/telescope/mount/library/Library.command.cpp,165,Select library/catalog by number (0..14),False,False,False
+:GX90#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,17,Get pulse guide rate setting (numeric),True,True,True
+:Mgd[n]#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,30,Pulse guide command (E/W/N/S) with duration n ms,True,True,True
+:Mw#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,60,Move telescope west at guide rate,True,False,True
+:Me#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,64,Move telescope east at guide rate,True,False,True
+:Mn#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,68,Move telescope north at guide rate,True,False,True
+:Ms#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,72,Move telescope south at guide rate,True,False,True
+:Mp#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,76,Start spiral search move at guide rate,False,False,False
+:Q#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,122,Halt all slews / stop goto (Q command),True,False,True
+:RA[n.n]#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,119,Set Axis1 guide rate (degrees/sec),False,False,False
+:RE[n.n]#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,140,Set Axis2 guide rate (degrees/sec),False,False,False
+:RG#/:RC#/:RM#/:RF#/:RS#/:Rn#,Guide,firmware/OnStepX/src/telescope/mount/guide/Guide.command.cpp,161,Guide rate selection commands (preset and numeric),True,False,False
+:Gm#,Status,firmware/OnStepX/src/telescope/mount/status/Status.command.cpp,22,Get meridian pier-side (E/W/N),False,False,False
+:GU#,Status,firmware/OnStepX/src/telescope/mount/status/Status.command.cpp,22,Get telescope status string (packed flags),True,True,True
+:Gu#,Status,firmware/OnStepX/src/telescope/mount/status/Status.command.cpp,22,Get bit-packed telescope status,True,True,True
+:GW#,Status,firmware/OnStepX/src/telescope/mount/status/Status.command.cpp,22,Get tracking and basic mount state,True,True,True
+":SX97,[n]#",Status,firmware/OnStepX/src/telescope/mount/status/Status.command.cpp,374,Set buzzer state / beep actions,False,False,False
+:h?#,Home,firmware/OnStepX/src/telescope/mount/home/Home.command.cpp,14,"Get home status (senses, offsets)",True,True,True
+:hAn#,Home,firmware/OnStepX/src/telescope/mount/home/Home.command.cpp,14,Set auto-home state (enable/disable),False,False,False
+:hC#,Home,firmware/OnStepX/src/telescope/mount/home/Home.command.cpp,14,Move mount to home position,True,True,True
+":hC1,n#",Home,firmware/OnStepX/src/telescope/mount/home/Home.command.cpp,14,Set home sense/offset for axis1 (arcseconds),False,False,False
+":hC2,n#",Home,firmware/OnStepX/src/telescope/mount/home/Home.command.cpp,14,Set home sense/offset for axis2 (arcseconds),False,False,False
+:hF#,Home,firmware/OnStepX/src/telescope/mount/home/Home.command.cpp,14,Reset mount at home position (cold start),False,False,True
+:Gh#,Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Get horizon lower elevation limit,True,True,True
+:Go#,Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Get overhead (upper) elevation limit,True,True,True
+:GXE[m]#,Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Get other limits/settings via :GXE subcodes (various indices),False,False,False
+:Sh[sDD]#,Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Set elevation lower limit (degrees),False,False,False
+:So[DD]#,Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Set overhead elevation limit (degrees),False,False,False
+":SXE9,[n]#",Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Set meridian past-limit east (minutes),False,False,False
+":SXEA,[n]#",Limits,firmware/OnStepX/src/telescope/mount/limits/Limits.command.cpp,15,Set meridian past-limit west (minutes),False,False,False
+:MA#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Goto target Alt/Az (perform request),False,False,False
+:MD#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Get destination pier side for the target object,False,False,False
+:MN#/:MNe#/:MNw#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Goto current RA/Dec but with different pier side (opposite/east/west),False,False,False
+:MP#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Goto current position for polar align,False,False,False
+:MS#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Goto the target object (returns status code),True,True,True
+:Gr#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Get target RA (HMS),False,False,False
+:Gd#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Get target Dec (DMS),False,False,False
+:Ga#/:GaH#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Get target Altitude (DMS),False,False,False
+:Gz#/:GzH#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Get target Azimuth (DMS),False,False,False
+:Sr[HH:MM]#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Set target RA,True,False,True
+:Sd[sDD*MM]#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Set target Declination,True,False,True
+:Sa[sDD*MM]#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Set target Altitude,True,False,False
+:Sz[DDD*MM]#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,18,Set target Azimuth,True,False,False
+:GX0[n]#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,500,Extended :GX0 — get align model coefficients/settings (various subcodes),False,False,False
+:GX9[n]#,Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,500,Extended :GX9 — get various goTo settings (subcodes),False,False,False
+":SX0[m],[n]#",Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,500,Set align model coefficient [m] to value [n] (various subcodes),False,False,False
+":SX9[m],[n]#",Goto,firmware/OnStepX/src/telescope/mount/goto/Goto.command.cpp,500,Set mount misc settings (subcodes under SX9),False,False,False
+:GX91#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get PEC analog value (if PEC present),False,False,False
+:GXE6#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get number of steps per sidereal second,False,False,False
+:GXE7#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get PEC worm rotation steps (from NV),False,False,False
+:GXE8#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get PEC buffer size in seconds,False,False,False
+:VH#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get PEC index sense position (sidereal seconds),False,False,False
+:VR[n]#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Read PEC table entry rate adjustment for worm segment n,False,False,False
+:Vr[n]#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Read PEC RA ten-byte frame in hex starting at segment n,False,False,False
+:VS#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get PEC steps-per-sidereal-second (numeric),False,False,True
+:VW#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Get PEC worm rotation steps (numeric),False,False,False
+:WR+#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Shift PEC table ahead by one sidereal second,False,False,False
+:WR-#,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Shift PEC table back by one sidereal second,False,False,False
+":WR[n,sn]#",PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,Write PEC table entry for worm segment n with correction sn,False,False,False
+::$QZ+/-/ /Z/!/?,PEC,firmware/OnStepX/src/telescope/mount/pec/Pec.command.cpp,13,PEC control commands under :$QZ (enable/disable/record/clear/write/status),False,False,False
+:Ga#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get standard time (12-hour),False,False,False
+:GC#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get calendar date (MM/DD/YY),True,True,True
+:Gc#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get local standard time format (24),False,False,False
+:GG#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get UTC offset (HH:MM),False,False,False
+:Gg#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get site longitude (DMS),False,False,False
+:GL#/:GLH#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get local standard time in 24-hour format (optionally high precision),False,False,False
+:GM#/:GN#/:GO#/:GP#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get stored site names (site 1..4),False,False,False
+:GS#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get sidereal time (HMS),True,True,True
+:Gt#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get site latitude (DMS),False,False,False
+:Gv#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get site elevation (meters),False,False,False
+:GX80#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get UT1 time (HMS),True,True,True
+:GX81#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Get UT1 date (MM/DD/YY),True,True,True
+:GX89#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,"Date/time ready status (0 ready, 1 not ready)",False,False,False
+:SC[MM/DD/YY]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set local standard date,False,False,False
+:SG[sHH]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set UTC offset (timezone),False,False,False
+:Sg[(s)DDD*MM]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set site longitude,False,False,False
+:SL[HH:MM:SS]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set local time,False,False,False
+:SM/SN/SO/SP[s]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set site name strings (site1..4),False,False,False
+:St[sDD*MM]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set site latitude,False,False,False
+:SU[s.s]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set DUT1 (seconds) value used for UT1 conversion,False,False,False
+:Sv[sn.n]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Set site elevation (meters),False,False,False
+:W[n]#,Site,firmware/OnStepX/src/telescope/mount/site/Site.command.cpp,16,Select stored site number (0..3),False,False,False

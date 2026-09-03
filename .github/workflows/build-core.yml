@@ -1,0 +1,19 @@
+name: Build ASDEVLAB Core
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure CMake
+        run: cmake -S software/asdevlab -B build
+      - name: Build
+        run: cmake --build build -- -j$(nproc)
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure

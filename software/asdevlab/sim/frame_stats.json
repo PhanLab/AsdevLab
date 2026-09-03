@@ -1,0 +1,37 @@
+{
+  "frames": [
+    {
+      "id": "frame_0000",
+      "star_count": 120,
+      "background": 520,
+      "fwhm_x": 2.1,
+      "fwhm_y": 2.2,
+      "centroid0_x": 620.1,
+      "centroid0_y": 480.5,
+      "centroid1_x": 610.4,
+      "centroid1_y": 472.2
+    },
+    {
+      "id": "frame_0001",
+      "star_count": 90,
+      "background": 620,
+      "fwhm_x": 3.8,
+      "fwhm_y": 2.8,
+      "centroid0_x": 622.5,
+      "centroid0_y": 482.3,
+      "centroid1_x": 612.9,
+      "centroid1_y": 474.8
+    },
+    {
+      "id": "frame_0002",
+      "star_count": 20,
+      "background": 850,
+      "fwhm_x": 4.0,
+      "fwhm_y": 4.1,
+      "centroid0_x": 640.0,
+      "centroid0_y": 505.2,
+      "centroid1_x": 628.3,
+      "centroid1_y": 494.6
+    }
+  ]
+}

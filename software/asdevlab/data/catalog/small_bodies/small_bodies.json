@@ -1,0 +1,82 @@
+[
+  {
+    "id": "asteroid_ceres",
+    "name": "Ceres",
+    "display_name": "Ceres",
+    "type": "asteroid",
+    "alias": [
+      "1 Ceres"
+    ],
+    "magnitude": 6.7,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "ephemeris",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Ceres is the largest object in the asteroid belt."
+  },
+  {
+    "id": "asteroid_vesta",
+    "name": "Vesta",
+    "display_name": "Vesta",
+    "type": "asteroid",
+    "alias": [
+      "4 Vesta"
+    ],
+    "magnitude": 5.1,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "ephemeris",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Vesta is a large asteroid in the main belt."
+  },
+  {
+    "id": "asteroid_pallas",
+    "name": "Pallas",
+    "display_name": "Pallas",
+    "type": "asteroid",
+    "alias": [
+      "2 Pallas"
+    ],
+    "magnitude": 6.4,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "ephemeris",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Pallas is a large asteroid discovered in 1802."
+  },
+  {
+    "id": "comet_halley",
+    "name": "Halley's Comet",
+    "display_name": "Halley's Comet",
+    "type": "comet",
+    "alias": [
+      "1P/Halley"
+    ],
+    "magnitude": 6.0,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "ephemeris",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Halley's Comet is a periodic comet visible from Earth."
+  }
+]

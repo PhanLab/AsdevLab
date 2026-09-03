@@ -1,0 +1,32 @@
+{
+  "name": "core",
+  "objects": [
+    {
+      "id": "M31",
+      "name": "Andromeda Galaxy",
+      "provider": "static",
+      "type": "Galaxy",
+      "magnitude": 3.44,
+      "ra": 0.712,
+      "dec": 41.269
+    },
+    {
+      "id": "NGC7000",
+      "name": "North America Nebula",
+      "provider": "static",
+      "type": "Nebula",
+      "magnitude": 4.0,
+      "ra": 20.953,
+      "dec": 44.318
+    },
+    {
+      "id": "Mars",
+      "name": "Mars",
+      "provider": "ephemeris",
+      "type": "Planet",
+      "magnitude": 1.0,
+      "ra": 0.0,
+      "dec": 0.0
+    }
+  ]
+}

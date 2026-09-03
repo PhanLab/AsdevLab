@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ASDEVLAB — Mount Hardware Test</title>
+<style>
+body{font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;margin:12px;color:#111}
+.header{display:flex;align-items:center;gap:12px}
+.panel{border:1px solid #ccc;padding:12px;margin:8px 0;border-radius:6px}
+.row{display:flex;gap:8px;align-items:center}
+input[type=text],input[type=number]{padding:6px;border:1px solid #bbb;border-radius:4px}
+button{padding:8px 12px;border-radius:6px;border:1px solid #888;background:#f3f3f3;cursor:pointer}
+button.primary{background:#2b7cff;color:#fff;border-color:#1a5fcc}
+.big{font-size:18px;padding:12px 18px}
+.direction-grid{display:grid;grid-template-columns:80px 120px 80px;gap:8px;justify-content:center;align-items:center}
+.dir-btn{width:100%;height:56px;font-size:18px}
+.stop{background:#c62828;color:#fff;border-color:#8b1e1e}
+.disabled{opacity:0.45;pointer-events:none}
+.status-dot{height:10px;width:10px;border-radius:50%;display:inline-block;margin-right:6px}
+.small{font-size:12px;color:#555}
+.diagnostics{font-family:monospace;background:#fafafa;padding:8px;border-radius:6px}
+</style>
+</head>
+<body>
+<h1>Mount Hardware Test</h1>
+<div class="panel">
+  <div class="row header">
+    <div>
+      <div class="small">Backend mount host:</div>
+      <div id="host" class="small">loading...</div>
+    </div>
+    <div>
+      <div class="small">Backend mount port:</div>
+      <div id="port" class="small">loading...</div>
+    </div>
+    <div style="align-self:flex-end">
+      <button id="connect">REFRESH / CONNECT</button>
+    </div>
+    <div style="margin-left:12px">
+      <div id="connStatus"><span class="status-dot" style="background:#c62828"></span> DISCONNECTED</div>
+      <div class="small">Connection state from backend</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="modePanel">
+  <strong>MOUNT MODE</strong>
+  <div id="mountMode">N/A</div>
+</div>
+
+<div class="panel" id="livePanel">
+  <strong>LIVE STATUS</strong>
+  <div class="small">Polling interval: <span id="pollInterval">500</span>ms</div>
+  <div class="row">
+    <div style="min-width:200px">
+      <div>Connection: <span id="live_connection">N/A</span></div>
+      <div>Mount mode: <span id="live_mode">N/A</span></div>
+      <div>State: <span id="live_state">N/A</span></div>
+      <div>Tracking: <span id="live_tracking">N/A</span></div>
+      <div>Slewing: <span id="live_slewing">N/A</span></div>
+      <div>Parked: <span id="live_parked">N/A</span></div>
+      <div>Homed: <span id="live_home">N/A</span></div>
+    </div>
+    <div style="margin-left:24px">
+      <div>RA: <span id="live_ra">N/A</span></div>
+      <div>DEC: <span id="live_dec">N/A</span></div>
+      <div>ALT: <span id="live_alt">N/A</span></div>
+      <div>AZ: <span id="live_az">N/A</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="gotoPanel">
+  <strong id="gotoTitle">GOTO</strong>
+  <div id="altazControls">
+    ALT: <input id="alt_in" type="number" step="0.01" style="width:120px" />
+    AZ:  <input id="az_in" type="number" step="0.01" style="width:120px" />
+    <button id="goto_altaz" class="primary">GOTO</button>
+    <button id="sync_altaz">SYNC</button>
+  </div>
+  <div id="radecControls" style="display:none">
+    RA: <input id="ra_in" type="text" placeholder="HH:MM:SS or hours" style="width:140px" />
+    DEC: <input id="dec_in" type="text" placeholder="±DD:MM:SS or deg" style="width:140px" />
+    <button id="goto_radec" class="primary">GOTO</button>
+    <button id="sync_radec">SYNC</button>
+  </div>
+</div>
+
+<div class="panel">
+  <strong>MANUAL MOTOR TEST</strong>
+  <div class="direction-grid">
+    <div></div>
+    <div><button id="north" class="dir-btn">▲</button></div>
+    <div></div>
+    <div><button id="west" class="dir-btn">◀</button></div>
+    <div><button id="stop" class="dir-btn stop">STOP</button></div>
+    <div><button id="east" class="dir-btn">▶</button></div>
+    <div></div>
+    <div><button id="south" class="dir-btn">▼</button></div>
+    <div></div>
+  </div>
+  <div style="margin-top:8px">
+    <button id="track_on">TRACK ON</button>
+    <button id="track_off">TRACK OFF</button>
+    <button id="home">HOME</button>
+    <button id="park">PARK</button>
+    <button id="abort" class="stop">ABORT</button>
+  </div>
+</div>
+
+<div class="panel" id="focuserPanel">
+  <strong>FOCUSER</strong>
+  <div>Connection: <span id="focuser_connection">N/A</span></div>
+  <div>Position: <span id="focuser_position">N/A</span></div>
+  <div>Target: <span id="focuser_target">N/A</span></div>
+  <div>State: <span id="focuser_state">N/A</span></div>
+  <div style="margin-top:8px">
+    <button id="foc_in" class="dir-btn">IN</button>
+    <button id="foc_stop" class="dir-btn stop">STOP</button>
+    <button id="foc_out" class="dir-btn">OUT</button>
+  </div>
+  <div style="margin-top:8px">
+    <input id="foc_pos_in" type="number" placeholder="position" />
+    <button id="foc_move" class="primary">MOVE</button>
+  </div>
+</div>
+
+<div class="panel" id="flipMirrorPanel">
+  <strong>FLIP MIRROR</strong>
+  <div>Supported: <span id="flip_supported">N/A</span></div>
+  <div>Position: <span id="flip_position">N/A</span></div>
+  <div>Last op: <span id="flip_last_op">-</span></div>
+  <div style="margin-top:8px">
+    <button id="flip_camera" class="dir-btn">CAMERA</button>
+    <button id="flip_eyepiece" class="dir-btn">EYEPIECE</button>
+  </div>
+  <div class="small">Flip mirror diagnostics:</div>
+  <pre id="flip_log" class="diagnostics" style="height:120px;overflow:auto"></pre>
+</div>
+
+<div class="panel diagnostics">
+  <strong>DIAGNOSTICS</strong>
+  <div>Last op: <span id="diag_op">-</span></div>
+  <div>Last result: <span id="diag_result">-</span></div>
+  <div>Last message: <span id="diag_msg">-</span></div>
+  <div>Timestamp: <span id="diag_ts">-</span></div>
+  <pre id="diag_raw" style="white-space:pre-wrap"></pre>
+</div>
+
+<div class="panel" id="rotatorPanel">
+  <strong>ROTATOR</strong>
+  <div>Connection: <span id="rot_connection">N/A</span></div>
+  <div>Current angle: <span id="rot_angle">N/A</span></div>
+  <div>Driver status: <span id="rot_driver">N/A</span></div>
+  <div style="margin-top:8px">
+    <input id="rot_angle_in" type="number" step="0.01" placeholder="angle°" style="width:120px" />
+    <button id="rot_goto" class="primary">GOTO</button>
+    <input id="rot_delta_in" type="number" step="0.01" placeholder="delta°" style="width:120px" />
+    <button id="rot_rel" >REL</button>
+  </div>
+  <div style="margin-top:8px">
+    <button id="rot_cw" class="dir-btn">CW</button>
+    <button id="rot_stop" class="dir-btn stop">STOP</button>
+    <button id="rot_ccw" class="dir-btn">CCW</button>
+  </div>
+  <div style="margin-top:8px">
+    Rate: <select id="rot_rate">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+    </select>
+    <button id="rot_set_rate">SET</button>
+    <button id="rot_zero">ZERO</button>
+    <button id="rot_half">HALF</button>
+    <button id="rot_home">HOME</button>
+  </div>
+  <div style="margin-top:8px">
+    <label><input id="rot_derotate" type="checkbox" /> derotate</label>
+    <button id="rot_reverse">REVERSE</button>
+    <button id="rot_park">PARK</button>
+    <button id="rot_unpark">UNPARK</button>
+  </div>
+  <div class="small">Rotator action log:</div>
+  <pre id="rot_log" class="diagnostics" style="height:160px;overflow:auto"></pre>
+</div>
+
+<script>
+const pollIntervalMs = 500;
+let pollTimer = null;
+let connected = false;
+let inProgress = false;
+let manualActive = null; // "north" etc
+
+function setConnState(ok) {
+  connected = ok;
+  const dot = document.querySelector('.status-dot');
+  const txt = document.getElementById('connStatus');
+  if (ok) { dot.style.background = '#2b7cff'; txt.innerHTML = '<span class="status-dot" style="background:#2b7cff"></span> CONNECTED'; }
+  else { dot.style.background = '#c62828'; txt.innerHTML = '<span class="status-dot" style="background:#c62828"></span> DISCONNECTED'; }
+  // disable/enable relevant control groups consistently when backend disconnected
+  document.querySelectorAll('#gotoPanel button, #gotoPanel input, #north,#south,#east,#west,#track_on,#track_off,#home,#park').forEach(el=>{ if (ok) el.classList.remove('disabled'); else el.classList.add('disabled'); });
+  document.querySelectorAll('#rotatorPanel button, #rotatorPanel input, #rotatorPanel select').forEach(el=>{ if (ok) el.classList.remove('disabled'); else el.classList.add('disabled'); });
+  document.querySelectorAll('#focuserPanel button, #focuserPanel input').forEach(el=>{ if (ok) el.classList.remove('disabled'); else el.classList.add('disabled'); });
+  document.querySelectorAll('#flipMirrorPanel button').forEach(el=>{ if (ok) el.classList.remove('disabled'); else el.classList.add('disabled'); });
+}
+
+async function fetchMode() {
+  try {
+    const r = await fetch('/api/mount/mode');
+    if (!r.ok) throw new Error('mode fetch failed');
+    const j = await r.json();
+    if (j && j.ok && j.data) {
+      const mode = j.data.mode || 'UNKNOWN';
+      document.getElementById('mountMode').textContent = mode === 'ALTAZ' ? 'ALT-AZ' : 'FORK / EQUATORIAL';
+      document.getElementById('live_mode').textContent = mode === 'ALTAZ' ? 'ALTAZ' : 'EQUATORIAL';
+      // show/hide controls
+      if (mode === 'ALTAZ') { document.getElementById('altazControls').style.display=''; document.getElementById('radecControls').style.display='none'; }
+      else { document.getElementById('altazControls').style.display='none'; document.getElementById('radecControls').style.display=''; }
+    }
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
+function updateDiagnostics(op, result, message, raw) {
+  document.getElementById('diag_op').textContent = op;
+  document.getElementById('diag_result').textContent = result;
+  document.getElementById('diag_msg').textContent = message || '-';
+  document.getElementById('diag_ts').textContent = new Date().toISOString();
+  if (raw) document.getElementById('diag_raw').textContent = raw; else document.getElementById('diag_raw').textContent = '';
+}
+
+async function fetchStatus() {
+  try {
+    const r = await fetch('/api/mount/status');
+    if (!r.ok) throw new Error('status fetch failed');
+    const j = await r.json();
+    const ok = j && j.ok;
+    setConnState(ok);
+    // parse and update fields conservatively
+    document.getElementById('live_connection').textContent = ok ? 'CONNECTED' : 'DISCONNECTED';
+    if (j && j.data) {
+      const raw = j.data.raw || '';
+      const msg = j.data.message || '';
+      // status fields are in j.data.status? Fallback to coordinates endpoint for coords
+      document.getElementById('live_state').textContent = msg || 'N/A';
+      updateDiagnostics('status', ok ? 'SUCCESS' : 'ERROR', msg, JSON.stringify(j,null,2));
+    }
+  } catch (e) {
+    setConnState(false);
+    updateDiagnostics('status','ERROR', String(e), '');
+  }
+}
+
+async function fetchCoords() {
+  try {
+    const r = await fetch('/api/mount/coordinates');
+    if (!r.ok) throw new Error('coordinates fetch failed');
+    const j = await r.json();
+    if (j && j.ok && j.data) {
+      const d = j.data;
+      document.getElementById('live_ra').textContent = d.ra_hours !== undefined ? d.ra_hours : 'N/A';
+      document.getElementById('live_dec').textContent = d.dec_degrees !== undefined ? d.dec_degrees : 'N/A';
+      document.getElementById('live_alt').textContent = d.alt_degrees !== undefined ? d.alt_degrees + '°' : 'N/A';
+      document.getElementById('live_az').textContent = d.az_degrees !== undefined ? d.az_degrees + '°' : 'N/A';
+    }
+  } catch (e) {
+    // ignore
+  }
+}
+
+async function pollOnce() {
+  await fetchMode();
+  await fetchStatus();
+  await fetchFocuserStatus();
+  await fetchFlipMirrorStatus();
+  await fetchCoords();
+}
+
+async function fetchConfig() {
+  try {
+    const r = await fetch('/api/mount/config');
+    if (!r.ok) throw new Error('config fetch failed');
+    const j = await r.json();
+    if (j && j.ok && j.data) {
+      document.getElementById('host').textContent = j.data.host || 'N/A';
+      document.getElementById('port').textContent = j.data.port || 'N/A';
+    }
+  } catch (e) {
+    document.getElementById('host').textContent = 'unknown';
+    document.getElementById('port').textContent = 'unknown';
+  }
+}
+
+// Focuser helpers
+async function fetchFocuserStatus() {
+  try {
+    const r = await fetch('/api/focuser/status');
+    if (!r.ok) throw new Error('focuser status fetch failed');
+    const j = await r.json();
+    const ok = j && j.ok;
+    document.getElementById('focuser_connection').textContent = ok ? 'CONNECTED' : 'DISCONNECTED';
+    if (j && j.data) {
+      document.getElementById('focuser_position').textContent = j.data.position !== undefined ? j.data.position : 'N/A';
+      document.getElementById('focuser_state').textContent = j.data.moving ? (j.data.moving ? 'MOVING' : 'IDLE') : (j.data.message || 'N/A');
+      updateDiagnostics('focuser_status', ok ? 'SUCCESS' : 'ERROR', j.data.message || '', JSON.stringify(j));
+    }
+  } catch (e) {
+    document.getElementById('focuser_connection').textContent = 'DISCONNECTED';
+    updateDiagnostics('focuser_status','ERROR', String(e), '');
+  }
+}
+
+async function fetchFlipMirrorStatus() {
+  try {
+    const r = await fetch('/api/flipmirror/status');
+    if (!r.ok) throw new Error('flipmirror status fetch failed');
+    const j = await r.json();
+    const ok = j && j.ok;
+    document.getElementById('flip_supported').textContent = j && j.data ? (j.data.supported ? 'YES' : 'NO') : (ok ? 'YES' : 'NO');
+    if (j && j.data && j.data.position) {
+      document.getElementById('flip_position').textContent = j.data.position;
+    } else {
+      document.getElementById('flip_position').textContent = 'N/A';
+    }
+    updateDiagnostics('flip_status', ok ? 'SUCCESS' : 'ERROR', j && j.data ? (j.data.message || '') : '', JSON.stringify(j));
+  } catch (e) {
+    document.getElementById('flip_supported').textContent = 'N/A';
+    document.getElementById('flip_position').textContent = 'N/A';
+    updateDiagnostics('flip_status','ERROR', String(e), '');
+  }
+}
+
+async function focuserAction(path, op, body) {
+  if (!connected) return;
+  try {
+    const r = await fetch(path, {method:'POST', headers:{'Content-Type':'application/json'}, body: body? JSON.stringify(body): undefined});
+    const j = await r.json();
+    updateDiagnostics(op, j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics(op,'ERROR',String(e),''); }
+}
+
+function setupFocuserControls() {
+  const inBtn = document.getElementById('foc_in');
+  const outBtn = document.getElementById('foc_out');
+  const stopBtn = document.getElementById('foc_stop');
+  let focActive = null;
+  const startIn = ()=>{ focActive = 'in'; focuserAction('/api/focuser/in','FOCUSER_IN'); };
+  const startOut = ()=>{ focActive = 'out'; focuserAction('/api/focuser/out','FOCUSER_OUT'); };
+  const stop = ()=>{ focuserAction('/api/focuser/stop','FOCUSER_STOP'); focActive = null; };
+
+  // mouse
+  inBtn.addEventListener('mousedown',(e)=>{ e.preventDefault(); if (!connected) return; startIn(); });
+  inBtn.addEventListener('mouseup',(e)=>{ e.preventDefault(); stop(); });
+  inBtn.addEventListener('mouseleave',(e)=>{ if (focActive==='in') stop(); });
+  outBtn.addEventListener('mousedown',(e)=>{ e.preventDefault(); if (!connected) return; startOut(); });
+  outBtn.addEventListener('mouseup',(e)=>{ e.preventDefault(); stop(); });
+  outBtn.addEventListener('mouseleave',(e)=>{ if (focActive==='out') stop(); });
+  stopBtn.addEventListener('click', stop);
+
+  // touch
+  inBtn.addEventListener('touchstart',(e)=>{ e.preventDefault(); if (!connected) return; startIn(); });
+  inBtn.addEventListener('touchend',(e)=>{ e.preventDefault(); stop(); });
+  outBtn.addEventListener('touchstart',(e)=>{ e.preventDefault(); if (!connected) return; startOut(); });
+  outBtn.addEventListener('touchend',(e)=>{ e.preventDefault(); stop(); });
+
+  // keyboard: I/O keys
+  let keyActive = null;
+  window.addEventListener('keydown',(e)=>{
+    if (keyActive) return;
+    if (e.key === 'i' || e.key === 'I') { keyActive = 'i'; startIn(); }
+    if (e.key === 'o' || e.key === 'O') { keyActive = 'o'; startOut(); }
+  });
+  window.addEventListener('keyup',(e)=>{
+    if (e.key === 'i' || e.key === 'I' || e.key === 'o' || e.key === 'O') { stop(); keyActive = null; }
+  });
+
+  // absolute move
+  document.getElementById('foc_move').addEventListener('click', ()=>{
+    const v = parseInt(document.getElementById('foc_pos_in').value);
+    if (isNaN(v)) { updateDiagnostics('focuser_move','ERROR','invalid position',''); return; }
+    focuserAction('/api/focuser/move','FOCUSER_MOVE',{position: v});
+  });
+}
+
+// Rotator helpers
+async function fetchRotatorStatus() {
+  try {
+    const r = await fetch('/api/rotator/status');
+    const j = await r.json();
+    const ok = j && j.ok;
+    document.getElementById('rot_connection').textContent = ok ? 'CONNECTED' : 'DISCONNECTED';
+    if (j && j.data) {
+      if (j.data.angle_deg !== undefined) document.getElementById('rot_angle').textContent = j.data.angle_deg + '°';
+      if (j.data.driver_status !== undefined) document.getElementById('rot_driver').textContent = j.data.driver_status;
+    }
+  } catch (e) {
+    document.getElementById('rot_connection').textContent = 'DISCONNECTED';
+  }
+}
+
+function rotLog(op, ok, msg, raw) {
+  const p = document.getElementById('rot_log');
+  const ts = new Date().toISOString();
+  // optional extended arguments: endpoint, payload, httpStatus
+  const endpoint = arguments.length > 4 ? arguments[4] : '';
+  const payload = arguments.length > 5 ? arguments[5] : '';
+  const httpStatus = arguments.length > 6 ? arguments[6] : '';
+  const line = `${ts} ${op} ${ok? 'OK':'ERR'} ${msg || ''}` + (endpoint ? ` [${endpoint}]` : '') + (payload ? ` payload=${payload}` : '') + (httpStatus ? ` status=${httpStatus}` : '') + (raw? ` resp=${JSON.stringify(raw)}` : '') + "\n";
+  p.textContent = line + p.textContent;
+}
+
+function setupRotatorControls() {
+  document.getElementById('rot_goto').addEventListener('click', async ()=>{
+    if (!connected) { rotLog('goto', false, 'not connected', '', '/api/rotator/goto', '', 'N/A'); return; }
+    const v = parseFloat(document.getElementById('rot_angle_in').value);
+    if (isNaN(v)) { rotLog('goto','ERR','invalid angle','', '/api/rotator/goto', '', 'N/A'); return; }
+    const payload = JSON.stringify({angle: v});
+    const r = await fetch('/api/rotator/goto',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+    const j = await r.json(); rotLog('goto', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/goto', payload, r.status);
+    fetchRotatorStatus();
+  });
+  document.getElementById('rot_rel').addEventListener('click', async ()=>{
+    if (!connected) { rotLog('rel', false, 'not connected', '', '/api/rotator/relative', '', 'N/A'); return; }
+    const v = parseFloat(document.getElementById('rot_delta_in').value);
+    if (isNaN(v)) { rotLog('rel','ERR','invalid delta','', '/api/rotator/relative', '', 'N/A'); return; }
+    const payload = JSON.stringify({delta: v});
+    const r = await fetch('/api/rotator/relative',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+    const j = await r.json(); rotLog('rel', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/relative', payload, r.status);
+    fetchRotatorStatus();
+  });
+  const cw = document.getElementById('rot_cw');
+  const ccw = document.getElementById('rot_ccw');
+  const stop = document.getElementById('rot_stop');
+  const startCW = async ()=>{ const r = await fetch('/api/rotator/cw',{method:'POST'}); const j = await r.json(); rotLog('cw', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/cw','', r.status); };
+  const startCCW = async ()=>{ const r = await fetch('/api/rotator/ccw',{method:'POST'}); const j = await r.json(); rotLog('ccw', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/ccw','', r.status); };
+  const doStop = async ()=>{ const r = await fetch('/api/rotator/stop',{method:'POST'}); const j = await r.json(); rotLog('stop', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/stop','', r.status); };
+  cw.addEventListener('mousedown', (e)=>{ e.preventDefault(); if (!connected) { rotLog('cw', false, 'not connected','', '/api/rotator/cw','', 'N/A'); return; } startCW(); });
+  cw.addEventListener('mouseup', (e)=>{ e.preventDefault(); if (!connected) return; doStop(); });
+  cw.addEventListener('touchstart', (e)=>{ e.preventDefault(); if (!connected) return; startCW(); });
+  cw.addEventListener('touchend', (e)=>{ e.preventDefault(); if (!connected) return; doStop(); });
+  ccw.addEventListener('mousedown', (e)=>{ e.preventDefault(); if (!connected) { rotLog('ccw', false, 'not connected','', '/api/rotator/ccw','', 'N/A'); return; } startCCW(); });
+  ccw.addEventListener('mouseup', (e)=>{ e.preventDefault(); if (!connected) return; doStop(); });
+  ccw.addEventListener('touchstart', (e)=>{ e.preventDefault(); if (!connected) return; startCCW(); });
+  ccw.addEventListener('touchend', (e)=>{ e.preventDefault(); if (!connected) return; doStop(); });
+  stop.addEventListener('click', doStop);
+
+  document.getElementById('rot_set_rate').addEventListener('click', async ()=>{
+    if (!connected) { rotLog('rate', false, 'not connected','', '/api/rotator/rate','', 'N/A'); return; }
+    const rate = parseInt(document.getElementById('rot_rate').value);
+    const payload = JSON.stringify({rate});
+    const r = await fetch('/api/rotator/rate',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+    const j = await r.json(); rotLog('rate', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/rate', payload, r.status);
+  });
+  document.getElementById('rot_zero').addEventListener('click', async ()=>{ if (!connected) { rotLog('zero', false, 'not connected','', '/api/rotator/zero','', 'N/A'); return; } const r = await fetch('/api/rotator/zero',{method:'POST'}); const j = await r.json(); rotLog('zero', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/zero','', r.status); fetchRotatorStatus(); });
+  document.getElementById('rot_half').addEventListener('click', async ()=>{ if (!connected) { rotLog('half', false, 'not connected','', '/api/rotator/half-travel','', 'N/A'); return; } const r = await fetch('/api/rotator/half-travel',{method:'POST'}); const j = await r.json(); rotLog('half', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/half-travel','', r.status); });
+  document.getElementById('rot_home').addEventListener('click', async ()=>{ if (!connected) { rotLog('home', false, 'not connected','', '/api/rotator/home','', 'N/A'); return; } const r = await fetch('/api/rotator/home',{method:'POST'}); const j = await r.json(); rotLog('home', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/home','', r.status); });
+  document.getElementById('rot_derotate').addEventListener('change', async (e)=>{ if (!connected) { rotLog('derotate', false, 'not connected','', '/api/rotator/derotate','', 'N/A'); return; } const checked = e.target.checked; const path = '/api/rotator/derotate'; const r = await fetch(path,{method:'POST'}); const j = await r.json(); rotLog('derotate', j.ok, j.error || j.data && j.data.message, j, path,'', r.status); });
+  document.getElementById('rot_reverse').addEventListener('click', async ()=>{ if (!connected) { rotLog('reverse', false, 'not connected','', '/api/rotator/reverse','', 'N/A'); return; } const r = await fetch('/api/rotator/reverse',{method:'POST'}); const j = await r.json(); rotLog('reverse', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/reverse','', r.status); });
+  document.getElementById('rot_park').addEventListener('click', async ()=>{ if (!connected) { rotLog('park', false, 'not connected','', '/api/rotator/park','', 'N/A'); return; } const r = await fetch('/api/rotator/park',{method:'POST'}); const j = await r.json(); rotLog('park', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/park','', r.status); });
+  document.getElementById('rot_unpark').addEventListener('click', async ()=>{ if (!connected) { rotLog('unpark', false, 'not connected','', '/api/rotator/unpark','', 'N/A'); return; } const r = await fetch('/api/rotator/unpark',{method:'POST'}); const j = await r.json(); rotLog('unpark', j.ok, j.error || j.data && j.data.message, j, '/api/rotator/unpark','', r.status); });
+}
+
+function flipLog(op, ok, msg, raw) {
+  const p = document.getElementById('flip_log');
+  const ts = new Date().toISOString();
+  const endpoint = arguments.length > 4 ? arguments[4] : '';
+  const payload = arguments.length > 5 ? arguments[5] : '';
+  const httpStatus = arguments.length > 6 ? arguments[6] : '';
+  const line = `${ts} ${op} ${ok? 'OK':'ERR'} ${msg || ''}` + (endpoint ? ` [${endpoint}]` : '') + (payload ? ` payload=${payload}` : '') + (httpStatus ? ` status=${httpStatus}` : '') + (raw? ` resp=${JSON.stringify(raw)}` : '') + "\n";
+  p.textContent = line + p.textContent;
+  document.getElementById('flip_last_op').textContent = ts + ' ' + op + ' ' + (ok? 'OK':'ERR');
+}
+
+function setupFlipMirrorControls() {
+  document.getElementById('flip_camera').addEventListener('click', async ()=>{
+    if (!connected) return; const op = 'flip_camera'; const body = { position: 'camera' };
+    try {
+      const payload = JSON.stringify(body);
+      const r = await fetch('/api/flipmirror/move',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+      const j = await r.json(); flipLog(op, j.ok, j.error || (j.data && j.data.message) || '', j, '/api/flipmirror/move', payload, r.status);
+      fetchFlipMirrorStatus();
+      updateDiagnostics(op, j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', `endpoint=/api/flipmirror/move payload=${payload} status=${r.status} response=${JSON.stringify(j)}`);
+    } catch(e) { flipLog(op,false,String(e),''); updateDiagnostics(op,'ERROR',String(e),''); }
+  });
+  document.getElementById('flip_eyepiece').addEventListener('click', async ()=>{
+    if (!connected) return; const op = 'flip_eyepiece'; const body = { position: 'eyepiece' };
+    try {
+      const payload = JSON.stringify(body);
+      const r = await fetch('/api/flipmirror/move',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+      const j = await r.json(); flipLog(op, j.ok, j.error || (j.data && j.data.message) || '', j, '/api/flipmirror/move', payload, r.status);
+      fetchFlipMirrorStatus();
+      updateDiagnostics(op, j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', `endpoint=/api/flipmirror/move payload=${payload} status=${r.status} response=${JSON.stringify(j)}`);
+    } catch(e) { flipLog(op,false,String(e),''); updateDiagnostics(op,'ERROR',String(e),''); }
+  });
+}
+
+function startPolling() {
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(()=>{ if (!inProgress) pollOnce(); }, pollIntervalMs);
+  pollOnce();
+}
+
+
+// GOTO/SYNC handlers
+async function gotoAltAz() {
+  if (!connected) return;
+  if (inProgress) return;
+  inProgress = true;
+  const alt = parseFloat(document.getElementById('alt_in').value);
+  const az = parseFloat(document.getElementById('az_in').value);
+  updateDiagnostics('goto','IN_PROGRESS','', '');
+  try {
+    const r = await fetch('/api/mount/goto',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alt,az})});
+    const j = await r.json();
+    updateDiagnostics('goto', j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics('goto','ERROR',String(e),''); }
+  inProgress = false;
+}
+async function syncAltAz() {
+  if (!connected) return;
+  if (inProgress) return;
+  inProgress = true;
+  const alt = parseFloat(document.getElementById('alt_in').value);
+  const az = parseFloat(document.getElementById('az_in').value);
+  updateDiagnostics('sync','IN_PROGRESS','', '');
+  try {
+    const r = await fetch('/api/mount/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alt,az})});
+    const j = await r.json();
+    updateDiagnostics('sync', j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics('sync','ERROR',String(e),''); }
+  inProgress = false;
+}
+async function gotoRaDec() {
+  if (!connected) return;
+  if (inProgress) return;
+  inProgress = true;
+  const ra = document.getElementById('ra_in').value;
+  const dec = document.getElementById('dec_in').value;
+  updateDiagnostics('goto','IN_PROGRESS','', '');
+  try {
+    const r = await fetch('/api/mount/goto',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ra:ra,dec:dec})});
+    const j = await r.json();
+    updateDiagnostics('goto', j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics('goto','ERROR',String(e),''); }
+  inProgress = false;
+}
+async function syncRaDec() {
+  if (!connected) return;
+  if (inProgress) return;
+  inProgress = true;
+  const ra = document.getElementById('ra_in').value;
+  const dec = document.getElementById('dec_in').value;
+  updateDiagnostics('sync','IN_PROGRESS','', '');
+  try {
+    const r = await fetch('/api/mount/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ra:ra,dec:dec})});
+    const j = await r.json();
+    updateDiagnostics('sync', j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics('sync','ERROR',String(e),''); }
+  inProgress = false;
+}
+
+// Manual motion
+async function manual(direction) {
+  if (!connected) return;
+  try {
+    const r = await fetch('/api/mount/manual',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({direction})});
+    const j = await r.json();
+    updateDiagnostics('manual', j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics('manual','ERROR',String(e),''); }
+}
+
+function setupManualControls() {
+  const dirs = ['north','south','east','west'];
+  dirs.forEach(d=>{
+    const el = document.getElementById(d);
+    el.addEventListener('mousedown', (e)=>{ e.preventDefault(); if (!connected) return; manualActive = d; manual(d); });
+    el.addEventListener('mouseup', (e)=>{ e.preventDefault(); if (manualActive) { manual('stop'); manualActive = null; } });
+    el.addEventListener('mouseleave', (e)=>{ if (manualActive) { manual('stop'); manualActive = null; } });
+    // touch
+    el.addEventListener('touchstart', (e)=>{ e.preventDefault(); if (!connected) return; manualActive = d; manual(d); });
+    el.addEventListener('touchend', (e)=>{ e.preventDefault(); if (manualActive) { manual('stop'); manualActive = null; } });
+  });
+  const stop = document.getElementById('stop');
+  stop.addEventListener('click', ()=>{ manual('stop'); });
+
+  // keyboard
+  const keymap = { 'ArrowUp':'north','ArrowDown':'south','ArrowLeft':'west','ArrowRight':'east' };
+  let keyActive = null;
+  window.addEventListener('keydown',(e)=>{
+    if (keyActive) return; // prevent auto-repeat
+    if (keymap[e.key]) { e.preventDefault(); keyActive = keymap[e.key]; manual(keyActive); }
+  });
+  window.addEventListener('keyup',(e)=>{
+    if (keymap[e.key]) { e.preventDefault(); manual('stop'); keyActive = null; }
+  });
+}
+
+// Other controls
+async function startTracking(on) {
+  if (!connected) return;
+  try {
+    const r = await fetch('/api/mount/tracking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action: on? 'on':'off'})});
+    const j = await r.json();
+    updateDiagnostics('tracking', j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics('tracking','ERROR',String(e),''); }
+}
+async function doAction(path, op) {
+  if (!connected && op !== 'abort') return;
+  try {
+    const r = await fetch(path,{method:'POST'});
+    const j = await r.json();
+    updateDiagnostics(op, j.ok ? 'SUCCESS' : 'ERROR', j.error || (j.data && j.data.message) || '', JSON.stringify(j));
+  } catch(e) { updateDiagnostics(op,'ERROR',String(e),''); }
+}
+
+// wire up
+window.addEventListener('load', ()=>{
+  document.getElementById('connect').addEventListener('click', ()=>{ pollOnce(); });
+  document.getElementById('connect').addEventListener('click', ()=>{ fetchConfig(); });
+  document.getElementById('goto_altaz').addEventListener('click', gotoAltAz);
+  document.getElementById('sync_altaz').addEventListener('click', syncAltAz);
+  document.getElementById('goto_radec').addEventListener('click', gotoRaDec);
+  document.getElementById('sync_radec').addEventListener('click', syncRaDec);
+  document.getElementById('track_on').addEventListener('click', ()=>startTracking(true));
+  document.getElementById('track_off').addEventListener('click', ()=>startTracking(false));
+  document.getElementById('home').addEventListener('click', ()=>doAction('/api/mount/home','home'));
+  document.getElementById('park').addEventListener('click', ()=>doAction('/api/mount/park','park'));
+  document.getElementById('abort').addEventListener('click', ()=>doAction('/api/mount/abort','abort'));
+  setupManualControls();
+  setupFocuserControls();
+  setupFlipMirrorControls();
+  fetchConfig();
+  startPolling();
+});
+</script>
+</body>
+</html>

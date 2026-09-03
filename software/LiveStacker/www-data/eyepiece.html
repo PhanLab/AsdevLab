@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/media/img/facicon.png">
+    <link rel="shortcut icon" type="image/png" href="/media/img/facicon.png">
+    <title>OpenLiveStacker Eyepiece</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .eye-container {
+            position: absolute;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .eye-container.debug {
+            border: 5px solid red; /* DEBUG: red ring to visualize positioning of the eyepiece circle */
+        }
+
+        .eye-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        button {
+            border-radius: 2mm;
+            height: 10mm;
+            font-size: 5mm;
+            text-align: center;
+            vertical-align: middle;
+            background-color: black;
+            color: red;
+            border: 2px solid red
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+
+<script>
+    /** Debug logging is set in ./build/config.json
+     * "ols_data": { "debug_log": true, } */
+    var debugEnabled = false;
+
+    function debugLog() {
+        if (debugEnabled) {
+            console.log.apply(console, arguments);
+        }
+    }
+
+    function restCall(method, url, request, on_response) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url, true);
+        xhr.timeout = 5000;
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === 'fail') {
+                        console.error("API error on " + url, response.error);
+                        on_response(null);
+                    } else {
+                        on_response(response);
+                    }
+                } catch (e) {
+                    console.error("Failed to parse response from " + url, e);
+                    on_response(null);
+                }
+            } else {
+                console.error("HTTP error on " + url, xhr.status);
+                on_response(null);
+            }
+        };
+        xhr.onerror = function () {
+            console.error("Network error on " + url);
+            on_response(null);
+        };
+        xhr.ontimeout = function () {
+            console.error("Timeout on " + url);
+            on_response(null);
+        };
+        if (request) {
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(request));
+        } else {
+            xhr.send();
+        }
+    }
+
+    var current_binoviewers = null;
+    var current_ipd = null;
+    var current_ipd_gap = null;
+    var current_stream = null;
+    var current_debug = null;
+    var current_width = null;
+    var current_height = null;
+    var current_fps_limit = 1;
+    var updateLayoutTimeout = null;
+    var last_status_data = null;
+    var last_config_data = null;
+    var streamImage = new Image();
+
+    function drawToCanvas(canvas, img) {
+        debugLog('drawToCanvas', canvas, img.src);
+        if (!img.complete || img.naturalWidth === 0) return;
+
+        var rect = canvas.getBoundingClientRect();
+        var cw = Math.floor(rect.width);
+        var ch = Math.floor(rect.height);
+        if (cw === 0 || ch === 0) return;
+
+        if (canvas.width !== cw || canvas.height !== ch) {
+            canvas.width = cw;
+            canvas.height = ch;
+        }
+
+        var ctx = canvas.getContext('2d');
+        var iw = img.naturalWidth;
+        var ih = img.naturalHeight;
+
+        var iRatio = iw / ih;
+        var cRatio = cw / ch;
+
+        var sw, sh, sx, sy;
+        if (iRatio > cRatio) {
+            sh = ih;
+            sw = ih * cRatio;
+            sx = (iw - sw) / 2;
+            sy = 0;
+        } else {
+            sw = iw;
+            sh = iw / cRatio;
+            sx = 0;
+            sy = (ih - sh) / 2;
+        }
+
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cw, ch);
+    }
+
+
+    var updated_last = null;
+
+    function render(reason) {
+        debugLog('render', reason);
+        var canvases = document.getElementsByClassName('eye-canvas');
+        for (var i = 0; i < canvases.length; i++) {
+            drawToCanvas(canvases[i], streamImage);
+        }
+        updated_last = Date.now();
+    }
+
+    function animationLoop() {
+        var curr_time = Date.now();
+        var fps_limit = parseFloat(current_fps_limit) || 1;
+        var delay_ms = 1000 / fps_limit;
+        // Redraw at fps_limit as fallback for browsers not triggering onload on MJPEG
+        if (updated_last == null || curr_time - updated_last > delay_ms) {
+            render('loop');
+        }
+        requestAnimationFrame(animationLoop);
+    }
+
+    function applyLayout() {
+        if (!last_config_data) return;
+        var statusData = last_status_data;
+        var data = last_config_data;
+
+        var stream = (statusData && statusData.status !== 'idle') ? 'stacked' : 'live';
+        var config = (data && data.value) || {};
+        // Handle both boolean and string values for binoviewers
+        var binoviewers = config.enable_binoviewers === true || config.enable_binoviewers === 'true';
+        var ipd_mm = parseFloat(config.ipd_mm) || 60;
+        var ipd_gap_mm = parseFloat(config.ipd_gap_mm) || 10;
+        var width_mm = parseFloat(config.screen_width_mm) || 140;
+
+        var fps_limit = parseFloat(config.eyepiece_fps_limit) || 1;
+        if (fps_limit <= 0) fps_limit = 1;
+        if (fps_limit > 60) fps_limit = 60; // Cap at 60 FPS to prevent unnecessary power drain
+
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+        var ipd = ipd_mm / width_mm * screenWidth;
+        var ipd_gap = ipd_gap_mm / width_mm * screenWidth;
+
+        // Read debug_log from ols_data config
+        debugEnabled = (config.debug_log === true || config.debug_log === 'true') || false;
+
+        if (stream !== current_stream) {
+            streamImage.src = '/api/video/' + stream;
+        }
+
+
+        if (binoviewers === current_binoviewers && ipd === current_ipd && ipd_gap == current_ipd_gap && stream === current_stream && debugEnabled === current_debug &&
+            screenWidth === current_width && screenHeight === current_height && fps_limit === current_fps_limit) {
+            return;
+        }
+
+        current_binoviewers = binoviewers;
+        current_ipd = ipd;
+        current_ipd_gap = ipd_gap;
+        current_stream = stream;
+        current_debug = debugEnabled;
+        current_width = screenWidth;
+        current_height = screenHeight;
+        current_fps_limit = fps_limit;
+
+        var container = document.getElementById('container');
+        container.innerHTML = '';
+
+        if (!binoviewers) {
+            debugLog('Creating single eye layout');
+            var eye = createEye();
+            var size = 'min(98vw, 98vh)';
+            eye.style.width = size;
+            eye.style.height = size;
+            eye.style.top = '50%';
+            eye.style.left = '50%';
+            eye.style.transform = 'translate(-50%, -50%)';
+            container.appendChild(eye);
+        } else {
+            debugLog('Creating binoviewers layout with IPD (px):', ipd);
+            var leftEye = createEye();
+            var rightEye = createEye();
+
+            // Constraint 1: Circles must not intersect
+            // Distance between centers = ipdPx, so radius must be <= ipdPx/2
+            var maxRadiusNoIntersect = ipd / 2 - ipd_gap / 2;
+
+            // Constraint 2: Circles must not overflow screen edges
+            // Left circle: center at (screenWidth/2 - ipdPx/2), must fit: radius <= screenWidth/2 - ipdPx/2
+            // Right circle: center at (screenWidth/2 + ipdPx/2), must fit: radius <= screenWidth/2 - ipdPx/2
+            var maxRadiusForScreenWidth = (screenWidth / 2) - (ipd / 2);
+
+            // Constraint 3: Height constraint
+            var maxRadiusForHeight = screenHeight / 2;
+
+            // Use the smallest constraint with 2% margin
+            var radius = Math.min(maxRadiusNoIntersect, maxRadiusForScreenWidth, maxRadiusForHeight) * 0.98;
+            var diameter = radius * 2;
+
+            debugLog('Screen:', screenWidth, 'x', screenHeight, 'IPD px:', ipd);
+            debugLog('Max radius - no intersect:', maxRadiusNoIntersect, 'screen width:', maxRadiusForScreenWidth, 'height:', maxRadiusForHeight);
+            debugLog('Final radius:', radius);
+
+            leftEye.style.width = diameter + 'px';
+            leftEye.style.height = diameter + 'px';
+            rightEye.style.width = diameter + 'px';
+            rightEye.style.height = diameter + 'px';
+
+            leftEye.style.top = '50%';
+            leftEye.style.left = 'calc(50% - ' + (ipd / 2) + 'px)';
+            leftEye.style.transform = 'translate(-50%, -50%)';
+
+            rightEye.style.top = '50%';
+            rightEye.style.left = 'calc(50% + ' + (ipd / 2) + 'px)';
+            rightEye.style.transform = 'translate(-50%, -50%)';
+
+            container.appendChild(leftEye);
+            container.appendChild(rightEye);
+        }
+        render('layout_applied');
+    }
+
+    function isInIframe() {
+        var url = window.location.href;
+        var queryPos = url.indexOf('?');
+        if (queryPos == -1)
+            return false;
+        var params = url.slice(queryPos + 1);
+        if (params == 'if')
+            return true;
+        return false;
+    }
+
+    function updateLayout() {
+        if (isInIframe()) {
+            var b = document.getElementById('toggle_button');
+            if (b)
+                b.remove();
+        }
+        if (updateLayoutTimeout) {
+            clearTimeout(updateLayoutTimeout);
+            updateLayoutTimeout = null;
+        }
+        restCall('get', '/api/stacker/status', null, function (statusData) {
+            restCall('get', '/api/config/ols_data', null, function (data) {
+                last_status_data = statusData;
+                last_config_data = data;
+                applyLayout();
+                updateLayoutTimeout = setTimeout(updateLayout, 2000);
+            });
+        });
+    }
+
+    function createEye() {
+        var div = document.createElement('div');
+        div.className = debugEnabled ? 'eye-container debug' : 'eye-container';
+        var canvas = document.createElement('canvas');
+        canvas.className = 'eye-canvas';
+        div.appendChild(canvas);
+        return div;
+    }
+
+    window.onload = function () {
+        updateLayout();
+        streamImage.onload = function () {
+            render('new_frame');
+        };
+        animationLoop();
+    };
+
+    var resizeTimeout = null;
+    window.onresize = function () {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+            applyLayout();
+        }, 100);
+    };
+    var current_full_screen = false;
+    var wakeLock = null;
+
+    async function toggleSWL(swl) {
+        try {
+            if (swl) {
+                wakeLock = await navigator.wakeLock.request('screen');
+            } else if (wakeLock) {
+                await wakeLock.release();
+                wakeLock = null;
+            }
+        } catch (err) {
+            console.error(`${err.name}, ${err.message}`);
+        }
+    }
+
+    function toggleFS() {
+        current_full_screen = !current_full_screen;
+        if (current_full_screen) {
+            document.documentElement.requestFullscreen({navigationUI: 'hide'});
+        } else {
+            document.exitFullscreen();
+        }
+        toggleSWL(current_full_screen);
+    }
+</script>
+<span id="toggle_button" style="position:absolute; left:1mm; top:1mm; z-index:5;">
+    <button onclick="toggleFS();">FS</button>
+</span>
+
+</body>
+</html>

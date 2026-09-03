@@ -1,0 +1,125 @@
+[
+  {
+    "id": "satellite_iss",
+    "name": "International Space Station",
+    "display_name": "International Space Station",
+    "type": "satellite",
+    "alias": [
+      "ISS",
+      "Zarya"
+    ],
+    "magnitude": -5.9,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "tle",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "The ISS is the largest human-made structure in space."
+  },
+  {
+    "id": "satellite_tiangong",
+    "name": "Tiangong Space Station",
+    "display_name": "Tiangong Space Station",
+    "type": "satellite",
+    "alias": [
+      "CSS",
+      "Chinese Space Station"
+    ],
+    "magnitude": -1.5,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "tle",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Tiangong is a Chinese space station."
+  },
+  {
+    "id": "satellite_hubble",
+    "name": "Hubble Space Telescope",
+    "display_name": "Hubble Space Telescope",
+    "type": "satellite",
+    "alias": [
+      "HST"
+    ],
+    "magnitude": 1.5,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "tle",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Hubble is a space telescope launched in 1990."
+  },
+  {
+    "id": "satellite_starlink",
+    "name": "Starlink Satellite",
+    "display_name": "Starlink Satellite",
+    "type": "satellite",
+    "alias": [
+      "Starlink Train"
+    ],
+    "magnitude": 2.0,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "tle",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Starlink is a large satellite internet constellation."
+  },
+  {
+    "id": "satellite_jwst",
+    "name": "James Webb Space Telescope",
+    "display_name": "James Webb Space Telescope",
+    "type": "satellite",
+    "alias": [
+      "JWST",
+      "Webb"
+    ],
+    "magnitude": null,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "tle",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "JWST is a large infrared space telescope."
+  },
+  {
+    "id": "satellite_envisat",
+    "name": "Envisat",
+    "display_name": "Envisat",
+    "type": "satellite",
+    "alias": [
+      "Environmental Satellite"
+    ],
+    "magnitude": 4.0,
+    "ra": null,
+    "dec": null,
+    "epoch": "dynamic",
+    "coordinate_source": "tle",
+    "ephemeris_id": null,
+    "constellation": "",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Envisat was a large Earth observation satellite."
+  }
+]

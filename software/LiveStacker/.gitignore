@@ -1,0 +1,7 @@
+data
+build
+www-data/media/js/jsdb.js
+*.swp
+*.swo
+*.swn
+.idea

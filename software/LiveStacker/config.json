@@ -1,0 +1,33 @@
+{
+    "libdir" : "./build",
+    "data_dir": "./data",
+    "driver" : "sim",
+    "sim" : {
+        "path" : "sim"
+    },
+    "mem_limit_mb" : 0,
+    "wdir" : {
+        "width" : 2028,
+        "height": 1520,
+        "format" : "raw16",
+        "path" : "./wd"
+    },
+    "toup" : {
+        "oem": false
+    },
+    "astap" : {
+        "exe": "astap_cli",
+        "db": "data/db"
+    },
+    "http": {
+        "ip":"0.0.0.0",
+        "port":8080
+    },
+    "indi": {
+        "connection" : "127.0.0.1:7624"
+    },
+    "indigo" : {
+        "connection" : "127.0.0.1:7624"
+    },
+    "start_cmd" : ""
+}

@@ -1,0 +1,266 @@
+    html {
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+    }
+    ::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+    }
+    .alpha_features {
+        display:none;
+    }
+    body, td { font-size: 5mm ; color:red ; font-family: sans; background-color:black }
+    a:link {color: red;}
+    a:visited { color: red; }
+    a:active { color:red; }
+    a:hover { color:red; }
+    img { padding:0; margin:0; }
+    button { border-radius:2mm; height:10mm; font-size:5mm ; text-align:center; vertical-align: middle; background-color:black; color:red; border: 2px solid red }
+    button:disabled {
+        color:#800000;
+    }
+
+    input[type=text], input[type=number], select {
+        border: 2px solid red;
+        border-radius:2mm;
+        font-size: 4mm;
+        color:red;
+        background-color:black;
+    }
+
+    
+    .solver_results { background-color: transparent; }
+    .nowr { white-space: nowrap; }
+    .slider { width: 100%; }
+    .val_input { width: 15mm; }
+    .wide_input { width: 30mm; }
+    .slider_elem { background-color: transparent; }
+    .comp_but, .incdec_but { width: 12mm ; height:12mm; font-size:6mm ; padding: 0 }
+
+    .mount_input { width: 36mm; height:18mm; font-size:9mm; padding: 0;}
+    .focuser_rect_but { 
+        width: 36mm ;
+        height:18mm;
+        font-size:9mm ;
+        padding: 0;
+        -webkit-touch-callout: none; /* Safari */
+        -webkit-user-select: none; /* Chrome */
+           -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
+    }
+    input#focuser_position {
+        font-size: 9mm;
+    }
+    .focuser_pos_cls  {
+        text-align:center;
+    }
+    .mount_sq_but { 
+        width: 18mm ;
+        height:18mm;
+        font-size:9mm ;
+        padding: 0;
+        -webkit-touch-callout: none; /* Safari */
+        -webkit-user-select: none; /* Chrome */
+           -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
+    }
+    .mount_but { width: 45mm ; height:15mm; font-size:8mm ; padding: 0; }
+
+    .stretch_background {
+        background: url(/media/img/stretch.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .sharp_background {
+        background: url(/media/img/sharp.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .mount_background {
+        background: url(/media/img/mount.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .solve_background {
+        background: url(/media/img/solve.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .no_sync_background {
+        background: url(/media/img/no_sync.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .pause_background {
+        background: url(/media/img/pause.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .resume_background {
+        background: url(/media/img/resume.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .save_background {
+        background: url(/media/img/save.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .stop_background {
+        background: url(/media/img/stop.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .cancel_background {
+        background: url(/media/img/cancel.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .error_background {
+        background: url(/media/img/error.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .settings_background {
+        background: url(/media/img/settings.png) no-repeat center center;
+        background-size: 12mm 12mm;
+    }
+    .N_background {
+        background: url(/media/img/N.png) no-repeat center center;
+        background-size: 15mm 15mm;
+    }
+    .S_background {
+        background: url(/media/img/S.png) no-repeat center center;
+        background-size: 15mm 15mm;
+    }
+    .W_background {
+        background: url(/media/img/W.png) no-repeat center center;
+        background-size: 15mm 15mm;
+    }
+    .E_background {
+        background: url(/media/img/E.png) no-repeat center center;
+        background-size: 15mm 15mm;
+    }
+    .fast_background {
+        background: url(/media/img/fast.png) no-repeat center center;
+        background-size: 15mm 15mm;
+    }
+    .slow_background {
+        background: url(/media/img/slow.png) no-repeat center center;
+        background-size: 15mm 15mm;
+    }
+    #thumb_stream_video {
+        padding:0;
+        margin:0;
+    }
+    #live_stream_video {
+        padding:0;
+        margin:0;
+    }
+    #live_stream_video_div, #solver_result_image_div {
+        overflow-x:scroll;
+        overflow-y:scroll;
+        padding:0;
+        margin:0;
+    }
+    #solver_result {
+        padding:0;
+        margin:0;
+    }
+    #solver_result_image {
+        padding:0;
+        margin:0;
+    }
+    #thumb {
+        text-align:right;
+        width:100%
+        padding: 0;
+        margin:0;
+    }
+    #video {
+        text-align:center;
+        width:100%
+        padding: 0;
+        margin:0;
+    }
+    .config_tab {
+        border: 1px solid red;
+        margin: 1mm 1mm 1mm 1mm;
+        padding: 1mm 1mm 1mm 1mm;
+        background: black;
+    }
+    .alert_div {
+            display:none;
+            position:absolute;
+            left:20%;
+            top:20%;
+            z-index:5;
+            padding: 1% 1% 1% 1%;
+            width: 58%;
+            background:black;
+            border: 1px solid red;
+            margin: auto;
+            text-align: center;
+    }
+    #video {
+        position:absolute;
+        left:0;
+        top:0;
+        bottom:0;
+        right:0;
+        padding:0 0 0 0;
+        z-index:-2;
+    }
+    .range_inp {
+        width:50%;
+    }
+    .range_title {
+        display: inline-block;
+        width:20%;
+    }
+    .config_div {
+        position:absolute;
+        left:10mm;
+        top:15mm;
+        right:10mm;
+        bottom:15mm;
+        z-index:2;
+        padding: 2mm 2mm 2mm 2mm;
+        border: 1px solid red;
+        overflow:scroll;
+     }
+   
+    .hctl {
+        font-size:4mm;
+        height:8mm;
+        width:18%;
+        padding:0;
+        margin:0 1% 0 1%;
+        border:1px solid red;
+        user-select: none;
+    }
+
+    #hist_ctl {
+        position:absolute;
+        bottom:2mm;
+        left:2mm;
+        right:2mm;
+        height:10mm;
+    }
+    #hist_div {
+        position:absolute;
+        bottom:15mm;
+        left:2mm;
+        right:2mm;
+        height:30%;
+    }
+    #hist_canvas {
+        width:100%;
+        height:100%;
+    }
+    #white_screen {
+        display:none;
+        position:absolute;
+        bottom:0;
+        left:0;
+        right:0;
+        top:0;
+        z-index:3;
+        background-color:white;    
+    }
+    
+

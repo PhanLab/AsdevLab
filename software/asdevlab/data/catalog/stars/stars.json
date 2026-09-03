@@ -1,0 +1,183 @@
+[
+  {
+    "id": "star_sirius",
+    "name": "Sirius",
+    "display_name": "Sirius",
+    "type": "star",
+    "alias": [
+      "Alpha Canis Majoris",
+      "Dog Star"
+    ],
+    "magnitude": -1.46,
+    "ra": 6.752472222222222,
+    "dec": -16.71611111111111,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Canis Major",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Sirius is the brightest star in the night sky."
+  },
+  {
+    "id": "star_arcturus",
+    "name": "Arcturus",
+    "display_name": "Arcturus",
+    "type": "star",
+    "alias": [
+      "Alpha Boötis"
+    ],
+    "magnitude": -0.05,
+    "ra": 14.261027777777779,
+    "dec": 19.182222222222222,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Boötes",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Arcturus is a red giant star."
+  },
+  {
+    "id": "star_vega",
+    "name": "Vega",
+    "display_name": "Vega",
+    "type": "star",
+    "alias": [
+      "Alpha Lyrae"
+    ],
+    "magnitude": 0.03,
+    "ra": 18.615638888888892,
+    "dec": 38.78361111111111,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Lyra",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Vega is one of the brightest stars in the northern sky."
+  },
+  {
+    "id": "star_capella",
+    "name": "Capella",
+    "display_name": "Capella",
+    "type": "star",
+    "alias": [
+      "Alpha Aurigae"
+    ],
+    "magnitude": 0.08,
+    "ra": 5.278,
+    "dec": 45.999,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Auriga",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Capella is a bright binary star system."
+  },
+  {
+    "id": "star_rigel",
+    "name": "Rigel",
+    "display_name": "Rigel",
+    "type": "star",
+    "alias": [
+      "Beta Orionis"
+    ],
+    "magnitude": 0.13,
+    "ra": 5.242,
+    "dec": -8.201,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Orion",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Rigel is a blue supergiant star."
+  },
+  {
+    "id": "star_procyon",
+    "name": "Procyon",
+    "display_name": "Procyon",
+    "type": "star",
+    "alias": [
+      "Alpha Canis Minoris"
+    ],
+    "magnitude": 0.34,
+    "ra": 7.655,
+    "dec": 5.224,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Canis Minor",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Procyon is a bright binary star."
+  },
+  {
+    "id": "star_altair",
+    "name": "Altair",
+    "display_name": "Altair",
+    "type": "star",
+    "alias": [
+      "Alpha Aquilae"
+    ],
+    "magnitude": 0.76,
+    "ra": 19.846,
+    "dec": 8.868,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Aquila",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Altair is a rapidly rotating star."
+  },
+  {
+    "id": "star_deneb",
+    "name": "Deneb",
+    "display_name": "Deneb",
+    "type": "star",
+    "alias": [
+      "Alpha Cygni"
+    ],
+    "magnitude": 1.25,
+    "ra": 20.654,
+    "dec": 45.28,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Cygnus",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Deneb is one of the most luminous stars known."
+  },
+  {
+    "id": "star_spica",
+    "name": "Spica",
+    "display_name": "Spica",
+    "type": "star",
+    "alias": [
+      "Alpha Virginis"
+    ],
+    "magnitude": 0.98,
+    "ra": 13.42,
+    "dec": -11.161,
+    "epoch": "J2000",
+    "coordinate_source": "catalog",
+    "ephemeris_id": null,
+    "constellation": "Virgo",
+    "messier": "",
+    "ngc": "",
+    "ic": "",
+    "fun_fact": "Spica is a binary star system."
+  }
+]
